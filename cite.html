@@ -8,7 +8,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <!--<script src="animation.js"></script>-->
     <style>
         .checked {
             color: orange;
@@ -17,8 +18,7 @@
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <script src="animation.js"></script>
+    
     <header>
         <div class="container">
             <nav>
@@ -197,25 +197,43 @@
             <div class="swiper gallerySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="img/slide1.jpg" alt="makeup-service">
+                        <img src="img/slide1.jpg" alt="makeup-service" class="slider_pic">
                     </div>
                     <div class="swiper-slide">
-                        <img src="img/slide2.jpg" alt="makeup-service">
+                        <img src="img/slide2.jpg" alt="makeup-service" class="slider_pic">
                     </div>
                     <div class="swiper-slide">
-                        <img src="img/slide3.jpg" alt="makeup-service">
+                        <img src="img/slide3.jpg" alt="makeup-service" class="slider_pic">
                     </div>
                     <div class="swiper-slide">
-                        <img src="img/slide4.jpg" alt="makeup-service">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/slide1.jpg" alt="makeup-service">
+                        <img src="img/slide4.jpg" alt="makeup-service" class="slider_pic">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>
-       
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+        <!-- Initialize Swiper -->
+  <script>
+    const swiper = new Swiper('.gallerySwiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: false,
+    grabCursor: true,
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  
+  });
+
+  </script>
         <section class="artists">
             <div class="head-content">
                 <h2>Наші майстри</h2>
