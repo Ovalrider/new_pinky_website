@@ -8,8 +8,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <!--<script src="animation.js"></script>-->
+    <script src="anim.js"></script>
     <style>
         .checked {
             color: orange;
@@ -18,7 +19,7 @@
 </head>
 
 <body>
-    
+
     <header>
         <div class="container">
             <nav>
@@ -29,11 +30,8 @@
                     <li><a href="#">відгуки</a></li>
                     <li><a href="#">майстри</a></li>
                     <li><a href="#">контакти</a></li>
-                    <li>
-                        <a href="#" class="btn bth-nav-menu">LOG IN</a>
-                    </li>
                 </ul>
-                <a href="#" class="btn bth-nav-menu">LOG IN</a>
+                <a href="#" class="btn bth-nav-menu">Увійти</a>
                 <button class="nav-menu-btn">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -42,7 +40,7 @@
                 <div>
                     <div>
                         <p>
-                            Така її звичай: краса завжди права.Бабур Захір ад-дін Мухаммад
+                            Такий її звичай: краса завжди права. Бабур Захір ад-дін Мухаммад
                         </p>
                         <span class="bar">
 
@@ -57,31 +55,64 @@
 
                         </span>
                         <p>
-                            Око художника здатний побачити красу у всьому, що його оточує.Стівен Пол Джобс
+                            Око митця здатне побачити красу у всьому, що його оточує. Стівен Джобс
                         </p>
                     </div>
                     <div class="btn-group">
-                        <a href="#" class="btn bth-nav-menu">Замовити послугу</a>
+                        <a href="#" class="btn bth-nav-menu" id="fbutton">Замовити послугу</a>
                         <a href="#" class="btn bth-nav-menu-1">Дізнатись більше</a>
+                    </div>
+                    <div class="register-box" id="showform">
+                        <h2>Анкета</h2> <button id="close_button">x</button>
+                        <form action="#" role="form" method="post">
+                            <div class="user-box">
+                                <input type="text" required>
+                                <label>Прізвище</label>
+                            </div>
+                            <div class="user-box">
+                                <input type="text" required>
+                                <label>Ім'я</label>
+                            </div>
+                            <div class="user-box">
+                                <input type="text" required>
+                                <label>Номер телефону</label>
+                            </div>
+                            <div class="user-box">
+                                <input type="text" required>
+                                <label>Пошта</label>
+                            </div>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Зберегти
+                            </a>
+                
+                        </form>
                     </div>
                 </div>
             </div>
-            <img src="img/grid1-top.png" alt="picture" class="grid-img">
+            <img src="img/grid2-top.png" alt="picture" class="grid-img">
         </div>
     </header>
+    <script>
+        const button = document.querySelector('#fbutton');
+const form = document.querySelector('.register-box');
+button.addEventListener('click',()=>{
+  form.classList.add('open');
+});
+const button2 =document.querySelector('#close_button');
+button2.addEventListener('click',()=>{
+  form.classList.add('close');
+});
+    </script>
     <div class="container">
-        <img src="img/grid1-bottom.png" alt="picture" class="grid-img">
+        <img src="img/grid2-bottom.png" alt="picture" class="grid-img">
         <section class="services">
             <div class="head-content">
                 <h2>Які послуги ми можемо надати?</h2>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                    blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
-                    excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia
-                    deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-                    est et expedita distinctio.
-                    Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus
-                    id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-                    repellendus.</p>
+
             </div>
             <div class="service-cards">
                 <div class="service-cards-1">
@@ -89,35 +120,35 @@
                     <img src="img/card1.png" alt="makeup-service" width=200>
                     <h3>МАКІЯЖ</h3>
                     <p>
-                        Як правило, вечірній макіяж наноситься на обличчя безпосередньо перед виходом жінки у
-                        світ . Такий час абсолютно виправдано, адже якщо нанести вечірній макіяж заздалегідь,
-                        тобто вдень, то ваш макіяж може здатися оточуючим кілька вульгарним, чого не бажає ні
-                        одна жінка.
+                        Гармонійний макіяж — одна з основних деталей ідеального образу кожної дівчини.
+                        Він повинен посилювати образ прекрасної леді, підходити до її стилю і настрою.
+                        Макіяж може підкреслити вашу чарівність та індивідуальність, зробить Вас його яскравою і
+                        незабутньою — а це точно те, чого бажає будь-яка панянка. Makeup студія "Pinky" готова допомогти
+                        створити Вам той самий ідеальний елегантний або сміливий образ.
                     </p>
                 </div>
                 <div class="service-cards-1">
                     <div class="light"> </div>
                     <img src="img/card2.png" alt="makeup-service" width=200>
-                    <h3>Курси "Макіяж для себе"</h3>
-                    <p>Авторська програма Навчального центру Іванни Пиріг.
-                        Це не просто курс. Це колосальний багаж знань,
+                    <h3>Курс "Макіяж для себе"</h3>
+                    <p>Авторська програма Навчального центру Ганни Пиріг.
+                        Це не просто курс, а колосальний багаж знань,
                         після якого Ви будете почувати себе впевнено та зможете одразу приступити до роботи
                         та стати справжнім ВІЗАЖИСТОМ!
 
-                        Забезпечуємо всіма необхідними матеріалами.
-                        Надаємо моделей для відпрацювання. Наші учні проходять практику в парі
-                        з найкращими професійними фотографами, беруть участь у найрізноманітніших
-                        конкурсах краси, танцювальних фестивалях, показах мод (в тому числі LvivFashion).
-                        А також Ви працюватимете в парі з перукарями.</p>
+                        "Pinky" забезпечить Вас всіма необхідними матеріалами та надасть моделей для відпрацювання. Наші
+                        учні беруть участь у найрізноманітніших
+                        конкурсах краси, танцювальних фестивалях і показах мод.</p>
                 </div>
                 <div class="service-cards-1">
                     <div class="light"></div>
                     <img src="img/card3.png" alt="makeup-service" width=200>
-                    <h3>Курс підвищення кваліфікації для візажистів</h3>
-                    <p>Курси підвищення кваліфікації для візажистів від школи Make Me Up Studio
-                        & School розроблені максимально практично та спрямовані на ваш успіх
-                        та розвиток кар'єри. Вони дадуть змогу освоїти якісно нові знання та
-                        навички та почати працювати у сферах, які досі були для тебе раніше
+                    <h3>Курс підвищення кваліфікації </h3>
+                    <p>Постійне вдосконалення своїх навичок та навчання новим технікам стає необхідністю для кожного
+                        візажиста, який прагне досягати більшого успіху у своїй кар'єрі. Курси підвищення кваліфікації
+                        для візажистів від "Pinky" розроблені максимально практично та спрямовані на ваш успіх
+                        та розвиток кар'єри. Вони дають змогу освоїти нові знання та
+                        навички та почати працювати у сферах, які були раніше
                         «недоступні».</p>
                 </div>
             </div>
@@ -169,18 +200,16 @@
             <div>
                 <h2>Дізнайтеся про нас більше</h2>
                 <p>
-                    Make Me Up Studio and School – це школа та студія макіяжу в Одесі, яка протягом 8-ми років показує
+                    Pinky – це школа та студія макіяжу в Києві, яка протягом 8-ми років показує
                     неймовірні успіхи в індустрії краси.
                     Тут можна отримати одну з найбільш цікавих та красивих професій – візажист або пізнати секрети та
                     таємниці бездоганного макіяжу для себе.
-                    Навчання в школі Make Me Up Studio and School відрізняється дуже ретельним підходом та уважним
+                    Навчання в школі Pinky відрізняється дуже ретельним підходом та уважним
                     ставленням до кожного учня. За 8 рокiв було випущено більше 300 професійних візажистів,
-                    понад 500 дівчат та жінок відкрили нові образи для себе, пройшовши навчання «Сам собі візажист». У
+                    понад 500 дівчат та жінок відкрили нові образи для себе, пройшовши навчання «Макіяж для себе». У
                     нашої школи макіяжу блискучі відгуки, і ми пишаємося цим. Крім основних курсів макіяжу,
-                    є курси підвищення кваліфікації, курс «Fashion-глянець», курс навчання аеромакіяжу (макіяжу
-                    аерографом),
-                    а також курс "Основи гриму", періодично проходять майстер-класи та тренінги, причому не тільки в
-                    Одесі, а й в інших містах та країнах.
+                    є курси підвищення кваліфікаці, періодично проходять майстер-класи та тренінги, причому не тільки в
+                    Києві, а й в інших містах та країнах.
                 </p>
                 <div>
                     <small>Робимо клієнтів щасливими з</small>
@@ -214,39 +243,38 @@
         </section>
         <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
         <!-- Initialize Swiper -->
-  <script>
-    const swiper = new Swiper('.gallerySwiper', {
-    // Optional parameters
-    direction: 'horizontal',
-    loop: false,
-    grabCursor: true,
-    // If we need pagination
-    pagination: {
-      el: '.swiper-pagination',
-    },
-  
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  
-  });
+        <script>
+            const swiper = new Swiper('.gallerySwiper', {
+                // Optional parameters
+                direction: 'horizontal',
+                loop: false,
+                grabCursor: true,
+                // If we need pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                },
 
-  </script>
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+            });
+
+        </script>
         <section class="artists">
             <div class="head-content">
                 <h2>Наші майстри</h2>
-                <p>Візажист з досвідом роботи на конкурсах краси та показах ,
-                    у тому числі зарубіжних , на тижнях моди Odessa Fashion Day, Ukrainian Fashion Week ,
-                    брала участь у проектах для іноземних та українських друкованих видань, Flanelle
+                <p>Візажисти makeup стуії Pinky мають великий досвід роботи на конкурсах краси та показах ,
+                    у тому числі зарубіжних, на тижнях моди Kyiv Fashion Day, Ukrainian Fashion Week ,
+                    брали участь у проектах для іноземних та українських друкованих видань, Flanelle
                     (Канада), Макіяж + YOU Professional, ANTVAN, London College of Fashion, University of
-                    the Arts London, CoolBaba. ТБ шоу "Хата-на-Тата" на СТБ. Дипломований Fashion візажист-
-                    стиліст - Працювала з брендами: Matrix, La Perla, Wella, Lacoste, Paul Mitchell та ін.
-                    Офіційний партнер Odessa Fashion Day, речник на Конференції в Нью-Йорку 2020р.
-
-                    Наші викладачі – професіонали своєї справи, про це красномовно говорять
-                    блискучі відгуки про наш базовий курс макіяжу.</p>
+                    the Arts London, CoolBaba. ТБ шоу "Хата-на-Тата" на СТБ. Співпрацювали з брендами: Matrix, La Perla,
+                    Wella, Lacoste, Paul Mitchell та ін.
+                    Офіційні партнери Kyiv Fashion Day, речник на Конференції в Нью-Йорку 2020р. Наші викладачі –
+                    професіонали своєї справи, про це красномовно говорять
+                    блискучі відгуки про наші курси макіяжу.</p>
             </div>
             <div class="artist-cards">
                 <div class="artists-cards">
@@ -320,30 +348,28 @@
             <h2>Зареєструйся на курси прямо зараз і отримай знижку</h2>
             <p>Курси макіяжу - це прекрасна можливість здобути вміння створення макіяжу. Під наглядом справжніх
                 професіоналів Ви оволодієте усіма нюансами макіяжу на наших практичних заняттях. Навики, одержані на
-                наших
-                курсах, Ви зможете одразу ж примінити на практиці.
-
-                Макіяж - це древня техніка підкреслити переваги та приховати недоліки рис обличчя.
-                Ще древньоримський поет Овідій радив застосовувати макіяж.
-
-                У сучасному житті техніка макіяжу дозволяє майстрам творити дива. Краса -
+                наших курсах, Ви зможете одразу ж використовувати на практиці. Макіяж - це стародавня техніка
+                підкреслити переваги та приховати недоліки рис обличчя.
+                Ще древньоримський поет Овідій радив застосовувати макіяж. У сучасному житті техніка макіяжу дозволяє
+                майстрам творити дива. Краса -
                 це те до чого ми всі прагнемо, а макіяж - один з інструментів, як втілити цю красу.
                 Реалізація всього потенціалу зовнішнього вигляду, мабуть, не можлива без вдало
-                підібраного макіяжу.
-
-                Навчитись влучно застосовувати макіяж, розвинути відчуття смаку, оволодіти різноманітними
+                підібраного макіяжу. Навчитись влучно застосовувати макіяж, розвинути відчуття смаку, оволодіти
+                різноманітними
                 техніками, Ви зможете на наших професйних курсах!</p>
         </div>
+        <div class="button_course">
         <a href="#" class="btn bth-nav-menu">Отримати курс</a>
+    </div>
     </section>
     <footer>
         <div class="container">
             <ul class="footer-menu">
-                <li><a href="#">контакти</a></li>
-                <li><a href="#">відгуки</a></li>
-                <li><a href="#">майстри</a></li>
-                <li><a href="#">про салон</a></li>
-                <li><a href="#">наші послуги</a></li>
+                <li><a href="#">Контакти</a></li>
+                <li><a href="#">Відгуки</a></li>
+                <li><a href="#">Майстри</a></li>
+                <li><a href="#">Про салон</a></li>
+                <li><a href="#">Наші послуги</a></li>
             </ul>
             <ul class="footer-social">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
