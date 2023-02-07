@@ -24,18 +24,29 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="makeupstudio">Pinky</a>
+                
                 <ul class="nav-menu">
-                    <li><a href="#">наші послуги</a></li>
-                    <li><a href="#">про салон</a></li>
-                    <li><a href="#">відгуки</a></li>
-                    <li><a href="#">майстри</a></li>
-                    <li><a href="#">контакти</a></li>
+                    <li><a href="#" class="links">наші послуги</a></li>
+                    <li><a href="#" class="links">про салон</a></li>
+                    <li><a href="#" class="links">відгуки</a></li>
+                    <li><a href="#" class="links">майстри</a></li>
+                    <li><a href="#" class="links">контакти</a></li>
                 </ul>
+                <button class="nav-menu-btn ">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                 </button>
                 <a href="#" class="btn bth-nav-menu">Увійти</a>
-                <button class="nav-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
             </nav>
+            <script>
+                let menuBtn = document.querySelector('.nav-menu-btn');
+                let menuNav = document.querySelector('.nav-menu');
+                menuBtn.addEventListener('click',function(){
+                    menuBtn.classList.toggle('active');
+                    menuNav.classList.toggle('open');
+                })
+            </script>
             <div class="header-content">
                 <div>
                     <div>
@@ -111,7 +122,7 @@ button2.addEventListener('click',()=>{
         <img src="img/grid2-bottom.png" alt="picture" class="grid-img">
         <section class="services">
             <div class="head-content">
-                <h2>Які послуги ми можемо надати?</h2>
+                <h2>Які курси ми викладаємо?</h2>
 
             </div>
             <div class="service-cards">
@@ -159,15 +170,6 @@ button2.addEventListener('click',()=>{
             </div>
             <div class="artworks-cards">
                 <div class="artworks-cards-1">
-                    <img class=artworks-img src="img/acard1.jpg" alt="makeup-service" width=200>
-                    <div class="light"></div>
-                    <h3 class="art-title">Повсякденний макіяж</h3>
-                    <div class="bid">
-                        <h3><i class="fab fa-ethereum"></i>
-                            Ціни від 400 грн</h3>
-                    </div>
-                </div>
-                <div class="artworks-cards-1">
                     <img class=artworks-img src="img/acard4.png" alt="makeup-service" width=200>
                     <div class="light"></div>
                     <h3 class="art-title">Вечірній макіяж</h3>
@@ -177,7 +179,16 @@ button2.addEventListener('click',()=>{
                     </div>
                 </div>
                 <div class="artworks-cards-1">
-                    <img class=artworks-img src="img/acard31.png" alt="makeup-service" width=200>
+                    <img class=artworks-img src="img/acard1.jpg" alt="makeup-service" width=200>
+                    <div class="light"></div>
+                    <h3 class="art-title">Повсякденний макіяж</h3>
+                    <div class="bid">
+                        <h3><i class="fab fa-ethereum"></i>
+                            Ціни від 400 грн</h3>
+                    </div>
+                </div>
+                <div class="artworks-cards-1">
+                    <img class=artworks-img src="img/acard3.jpg" alt="makeup-service" width=200>
                     <div class="light"></div>
                     <h3 class="art-title">Весільний макіяж</h3>
                     <div class="bid">
@@ -222,7 +233,7 @@ button2.addEventListener('click',()=>{
             </div>
         </section>
         <section class="slide">
-            <h2>Gallery</h2>
+            <h2>Наші роботи</h2>
             <div class="swiper gallerySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -236,6 +247,9 @@ button2.addEventListener('click',()=>{
                     </div>
                     <div class="swiper-slide">
                         <img src="img/slide4.jpg" alt="makeup-service" class="slider_pic">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/prslide.png" alt="makeup-service" class="slider_pic">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -265,7 +279,8 @@ button2.addEventListener('click',()=>{
         </script>
         <section class="artists">
             <div class="head-content">
-                <h2>Наші майстри</h2>
+                <div class="artists_h">
+                <h2>Наші майстри</h2></div>
                 <p>Візажисти makeup стуії Pinky мають великий досвід роботи на конкурсах краси та показах ,
                     у тому числі зарубіжних, на тижнях моди Kyiv Fashion Day, Ukrainian Fashion Week ,
                     брали участь у проектах для іноземних та українських друкованих видань, Flanelle
@@ -278,7 +293,7 @@ button2.addEventListener('click',()=>{
             </div>
             <div class="artist-cards">
                 <div class="artists-cards">
-                    <img src="img/smoke1.jpg" alt="bg-img" class="bg-img">
+                    <img src="img/afon1.png" alt="bg-img" class="bg-img">
                     <img src="img/mcard1.png" alt="makeup-artist" class="makeup-artist" width=200>
                     <h3>Вікторія Ярема</h3>
                     <div class="stars">
@@ -294,7 +309,7 @@ button2.addEventListener('click',()=>{
                     <button class="card-btn">Читати більше</button>
                 </div>
                 <div class="artists-cards">
-                    <img src="img/smoke2.jpg" alt="bg-img" class="bg-img">
+                    <img src="img/afon3.png" alt="bg-img" class="bg-img">
                     <img src="img/artist5.jpg" alt="makeup-artist" class="makeup-artist" width=200>
                     <h3>Аманда Уотчер</h3>
                     <div class="stars">
@@ -309,7 +324,7 @@ button2.addEventListener('click',()=>{
                     <button class="card-btn">Читати більше</button>
                 </div>
                 <div class="artists-cards">
-                    <img src="img/smoke3.jpg" alt="bg-img" class="bg-img">
+                    <img src="img/afon1.png" alt="bg-img" class="bg-img">
                     <img src="img/mcard2.png" alt="makeup-artist" class="makeup-artist" width=200>
                     <h3>Анна Власенко</h3>
                     <div class="stars">
@@ -324,7 +339,7 @@ button2.addEventListener('click',()=>{
                     <button class="card-btn">Читати більше</button>
                 </div>
                 <div class="artists-cards">
-                    <img src="img/smoke4.jpg" alt="bg-img" class="bg-img">
+                    <img src="img/afon4.png" alt="bg-img" class="bg-img">
                     <img src="img/mcard3.png" alt="makeup-artist" class="makeup-artist" width=200>
                     <h3>Cтефан Хмельницький</h3>
                     <div class="stars">
@@ -345,7 +360,8 @@ button2.addEventListener('click',()=>{
     </div>
     <section class="get_discount">
         <div class="discount_div">
-            <h2>Зареєструйся на курси прямо зараз і отримай знижку</h2>
+            <div class="discount_div_h">
+            <h2>Зареєструйся на курси прямо зараз і отримай знижку</h2></div>
             <p>Курси макіяжу - це прекрасна можливість здобути вміння створення макіяжу. Під наглядом справжніх
                 професіоналів Ви оволодієте усіма нюансами макіяжу на наших практичних заняттях. Навики, одержані на
                 наших курсах, Ви зможете одразу ж використовувати на практиці. Макіяж - це стародавня техніка
@@ -359,7 +375,7 @@ button2.addEventListener('click',()=>{
                 техніками, Ви зможете на наших професйних курсах!</p>
         </div>
         <div class="button_course">
-        <a href="#" class="btn bth-nav-menu">Отримати курс</a>
+        <a href="#" class="btn bth-nav-menu-1">Отримати курс</a>
     </div>
     </section>
     <footer>
