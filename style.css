@@ -222,7 +222,7 @@ h1{
 .service-cards{
     display:flex;
     justify-content: center;
-    align-items: center;
+    
     gap:2em;
     margin:10em 0 4em 0;
 }
