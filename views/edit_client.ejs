@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <title>Document</title>
+</head>
+<body>
+    <button href="/" class="btn bth-nav-menu" id="fbutton">Замовити послугу</button>
+    <div class="register-box" id="showform">
+        <h2>Оновити</h2> <button id="close_button">x</button>
+        <form action="/edit/<%- client._id %>" role="form" method="post">
+            <div class="user-box">
+                <input name="name" value="<%- client.name %>" type="text" required >
+                <label>Прізвище та ім'я</label>
+            </div>
+            <div class="user-box">
+                <input name="email"  value="<%- client.email %>"  type="email" required>
+                <label>Пошта</label>
+            </div>
+            <div class="user-box">
+                <input name="phone" value="<%- client.phone %>" type="text" required>
+                <label>Номер телефону</label>
+            </div>
+            <div class="user-box"></div>
+            <label for="courses">Оберіть курс:</label>
+                <select name="course" id="">
+                <option type="text">Макіяж</option>
+                <option type="text">Макіяж для себе</option>
+                <option type="text">Курс підвищення кваліфікації</option>
+                </select>
+                <button type="submit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Зберегти
+                </button>
+            </div>
+            
+
+        </form>
+        <script>
+            const button = document.querySelector('#fbutton');
+    const form = document.querySelector('.register-box');
+    button.addEventListener('click',()=>{
+      form.classList.add('open');
+    });
+    const button2 =document.querySelector('#close_button');
+    button2.addEventListener('click',()=>{
+      form.classList.add('close');
+    });
+        </script>
+</body>
+</html>
