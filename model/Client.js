@@ -4,7 +4,8 @@ const Client = mongoose.Schema({
     name: {type: String, required: true},
     phone: {type: String, required: true},
     email: {type: String, required: true},
-    course:{type: String, required: true}
+    course:{type: String, required: true},
+    master:{type: String, required: true}
 })
 // regex email validation mongoose?
 

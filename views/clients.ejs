@@ -18,6 +18,7 @@
                     <th>Пошта</th>
                     <th>Номер телефону</th>
                     <th>Курс</th>
+                    <th>Майстер</th>
                     <th>Модифікувати</th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                        <td><%- element.email %></td>
                        <td><%- element.phone %></td>
                        <td><%- element.course %></td>
+                       <td><%- element.master %></td>
                        <td>
                         <a href="edit/<%= element._id %>"><span>Edit</span> </a>
                         <a href="delete/<%= element._id %>"><span>Delete</span</a>
@@ -62,6 +64,13 @@
                 <option type="text">Макіяж для себе</option>
                 <option type="text">Курс підвищення кваліфікації</option>
                 </select>
+                <div class="user-box"></div>
+                <label for="masters">Оберіть майстера:</label>
+                <select name="master" id="" >
+                <option type="text">Аліна</option>
+                <option type="text">Петя</option>
+                <option type="text">Вася</option>
+                </select>
                 <button>
                     <span></span>
                     <span></span>
@@ -69,6 +78,7 @@
                     <span></span>
                     Зберегти
                 </button>
+
             </div>
             
 

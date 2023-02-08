@@ -3,8 +3,8 @@ import Client from "./model/Client.js"
 class ClientController{
     async create(req,res){
         try{
-        const {name, phone, email, course} = req.body
-        const client = await Client.create({name, phone, email,course})
+        const {name, phone, email, course, master} = req.body
+        const client = await Client.create({name, phone, email,course, master})
         res.redirect('/clients')
         }
         catch(e){
