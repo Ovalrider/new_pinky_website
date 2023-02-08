@@ -31,7 +31,6 @@ class ClientController{
                 return res.status(400).json("Not Found!")
             }
             const client = await Client.findById(id)
-            console.log(client)
             res.render('edit_client', {client : client})
             return 
         }
