@@ -723,7 +723,15 @@ transition: .5s;
     color:#03e9f4;
     font-size: 12px;
 }
-.register-box form a{
+#close_button{
+    background-color: rgba(28,28,28,0);
+    border:none;
+    color:#03e9f4;
+    margin-left: 12em;
+}
+.register-box form button{
+    background-color: rgba(28,28,28,0);
+    border:none;
     position:relative;
     display:inline-block;
     padding: 10px 20px;
@@ -736,7 +744,7 @@ transition: .5s;
     margin-top:40px;
     letter-spacing: 4px;
 }
-.register-box a:hover{
+.register-box button:hover{
   background: #03e9f4;
   color:#fff;
   border-radius: 5px;
@@ -744,13 +752,14 @@ transition: .5s;
     0 0 25px #03e9f4,
     0 0 50px #03e9f4,
     0 0 100px #03e9f4;
+    border: none;
 }
-.register-box a span{
+.register-box  button span{
     position: absolute;
     display: block;
 
 }
-.register-box a span:nth-child(1){
+.register-box  button span:nth-child(1){
     top:0;
     left:-100%;
     width:100%;
@@ -766,7 +775,7 @@ transition: .5s;
         left:100%;
     }
 }
-.register-box a span:nth-child(2){
+.register-box  button span:nth-child(2){
 top:-100%;
 right:0;
 width: 2px;
@@ -783,7 +792,7 @@ animation-delay: .25s;
         top:100%;
     }
 }
-.register-box a span:nth-child(3){
+.register-box button span:nth-child(3){
     bottom:0;
     right: -100%;
     width: 100%;
@@ -800,7 +809,7 @@ animation-delay: .25s;
         right:100%;
     }
 }
-.register-box a span:nth-child(4){
+.register-box  button span:nth-child(4){
 bottom: -100%;
 left:0;
 width: 2px;
