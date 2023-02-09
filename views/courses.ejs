@@ -7,36 +7,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <title>Клієнти</title>
+    <title>Курси</title>
 </head>
 <body>
     <div class="table_container">
         <table>
             <thead>
                 <tr>
-                    <th>Ім'я</th>
-                    <th>Пошта</th>
-                    <th>Номер телефону</th>
-                    <th>Курс</th>
+                    <th>Назва</th>
                     <th>Майстер</th>
+                    <th>Контакти</th>
+                    <th>Дедлайн подачі заявки</th>
                     <th>Модифікувати</th>
                 </tr>
             </thead>
             <tbody>
-                <% clients.forEach(element => { %>
+                <% courses.forEach(element => { %>
                     <tr>
                        <td><%- element.name %></td>
-                       <td><%- element.email %></td>
-                       <td><%- element.phone %></td>
-                       <td><%- element.course %></td>
                        <td><%- element.master %></td>
+                       <td><%- element.phone %></td>
+                       <td><%- element.deadline.toLocaleDateString() %></td>
                        <td>
-                        <a href="edit_client/<%= element._id %>"><span>Edit</span> </a>
-                        <a href="delete_client/<%= element._id %>"><span>Delete</span</a>
+                        <a href="edit_course/<%= element._id %>"><span>Edit</span> </a>
+                        <a href="delete_course/<%= element._id %>"><span>Delete</span</a>
                        </td>
                     </tr>
                    <% }) %>
-                   <!--СОНЯ Дальше тестовая строчка-->
             </tbody>
             
         </table>
@@ -44,22 +41,10 @@
     <button href="/" class="btn bth-nav-menu" id="fbutton">Додати клієнта</button>
     <div class="register-box" id="showform">
         <h2>Додати</h2> <button id="close_button">x</button>
-        <form action="/add_client" role="form" method="post">
-            <div class="user-box">
-                <input name="name"  type="text" required >
-                <label>Прізвище та ім'я</label>
-            </div>
-            <div class="user-box">
-                <input name="email"  type="email" required>
-                <label>Пошта</label>
-            </div>
-            <div class="user-box">
-                <input name="phone"  type="text" required>
-                <label>Номер телефону</label>
-            </div>
+        <form action="/add_course" role="form" method="post">       
             <div class="user-box"></div>
             <label for="courses">Оберіть курс:</label>
-                <select name="course" id="" >
+                <select name="name" id="" >
                 <option type="text">Макіяж</option>
                 <option type="text">Макіяж для себе</option>
                 <option type="text">Курс підвищення кваліфікації</option>
@@ -71,6 +56,14 @@
                 <option type="text">Петя</option>
                 <option type="text">Вася</option>
                 </select>
+                <div class="user-box">
+                    <input name="phone"  type="text" required>
+                    <label>Номер телефону</label>
+                </div>
+                <div class="user-box">
+                    <input name="deadline"  type="date" required >
+                    <label>Дедлайн</label>
+                </div>
                 <button>
                     <span></span>
                     <span></span>
