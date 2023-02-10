@@ -7,14 +7,6 @@ const Client = mongoose.Schema({
     course:{type: String, required: true},
     master:{type: String, required: true}
 })
-// regex email validation mongoose?
-
-
-
-
-
-
-
 
 
 export default mongoose.model('Client', Client)

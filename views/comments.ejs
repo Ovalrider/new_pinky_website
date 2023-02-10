@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./clients-course-style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <title>Курси</title>
+    <title>Відгуки</title>
 </head>
 <body>
     <header>
         <div class="nav-container">
             <nav>
                 <a href="/" class="makeupstudio">Pinky</a>
-
                 <ul class="nav-menu">
                     <li><a href="/#our_services" class="links">наші послуги</a></li>
                     <li><a href="/courses" class="links">наші курси</a></li>
@@ -44,26 +43,28 @@
     </header>
     <div class="all-content">
     <div class="table_container">
-        <table class="courses_table">
+        <table class="comments_table">
             <thead>
                 <tr>
-                    <th>Назва</th>
+                    <th>Ім'я</th>
+                    <th>Послуга</th>
                     <th>Майстер</th>
-                    <th>Контакти</th>
-                    <th>Дедлайн подачі заявки</th>
+                    <th>Відгук</th>
+                    <th>Оцінка</th>
                     <th>Модифікувати</th>
                 </tr>
             </thead>
             <tbody>
-                <% courses.forEach(element => { %>
+                <% comments.forEach(element => { %>
                     <tr>
                        <td><%- element.name %></td>
+                       <td><%- element.service %></td>
                        <td><%- element.master %></td>
-                       <td><%- element.phone %></td>
-                       <td><%- element.deadline.toLocaleDateString() %></td>
+                       <td><%- element.review %></td>
+                       <td><%- element.rating %>/5</td>
                        <td>
-                        <a href="edit_course/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
-                        <a href="delete_course/<%= element._id %>"class="delete_button"><span>Видалити</span</a>
+                        <a href="edit_comment/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
+                        <a href="delete_comment/<%= element._id %>"class="delete_button"><span>Видалити</span</a>
                        </td>
                     </tr>
                    <% }) %>
@@ -72,16 +73,20 @@
         </table>
     </div>
     <div class="container">
-    <button href="/" class="btn bth-nav-menu" id="fbutton">Додати курс</button></div>
+    <button href="/" class="btn bth-nav-menu" id="fbutton">Додати коментар</button></div>
     <div class="register-box" id="showform">
         <h2>Додати</h2> <button id="close_button">x</button>
-        <form action="/add_course" role="form" method="post">       
+        <form action="/add_comment" role="form" method="post">
+            <div class="user-box">
+                <input name="name" type="text" required>
+                <label>Ім'я</label>
+            </div>       
             <div class="user-box"></div>
-            <label for="courses">Оберіть курс:</label>
-                <select name="name" id="" >
-                <option type="text">Базовий курс</option>
-                <option type="text">Макіяж для себе</option>
-                <option type="text">Підвищення кваліфікації</option>
+            <label for="services">Оберіть послугу:</label>
+                <select name="service" id="" >
+                <option type="text">Перша</option>
+                <option type="text">Друга</option>
+                <option type="text">Третя</option>
                 </select>
                 <div class="user-box"></div>
                 <label for="masters">Оберіть майстера:</label>
@@ -92,12 +97,12 @@
                     <option type="text">Вікторія</option>
                 </select>
                 <div class="user-box">
-                    <input name="phone"  type="text" required>
-                    <label>Номер телефону</label>
+                    <input name="review"  type="text" maxlength="50" required>
+                    <label>Відгук</label>
                 </div>
                 <div class="user-box">
-                    <input name="deadline"  type="date" required >
-                    <label>Дедлайн</label>
+                    <input name="rating"  type="number" min="1" max="5" step="0.5" required >
+                    <label>Оцінка</label>
                 </div>
                 <button>
                     <span></span>

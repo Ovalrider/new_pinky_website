@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <title>Редагувати коментар</title>
+</head>
+<body>
+    <button href="/" class="btn bth-nav-menu" id="fbutton">Редагувати</button>
+    <div class="register-box" id="showform">
+        <h2>Редагувати</h2> <button id="close_button">x</button>
+        <form action="/edit_comment/<%- comment._id %>" role="form" method="post">
+            <div class="user-box">
+                <input name="name" type="text" value="<%- comment.name %>" required>
+                <label>Ім'я</label>
+            </div>       
+            <div class="user-box"></div>
+            <label for="services">Оберіть послугу:</label>
+                <select name="service" id="" >
+                <option type="text">Перша</option>
+                <option type="text">Друга</option>
+                <option type="text">Третя</option>
+                </select>
+                <div class="user-box"></div>
+                <label for="masters">Оберіть майстера:</label>
+                <select name="master" id="" >
+                    <option type="text">Аманда</option>
+                    <option type="text">Стефан</option>
+                    <option type="text">Анна</option>
+                    <option type="text">Вікторія</option>
+                </select>
+                <div class="user-box">
+                    <input name="review"  type="textarea" value="<%- comment.review %>" required>
+                    <label>Відгук</label>
+                </div>
+                <div class="user-box">
+                    <input name="rating"  type="number" min="1" max="5" step="0.5" value="<%- comment.rating %>" required >
+                    <label>Оцінка</label>
+                </div>
+                <button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Зберегти
+                </button>
+
+            </div>
+            
+
+        </form>
+        <script>
+            const button = document.querySelector('#fbutton');
+    const form = document.querySelector('.register-box');
+    button.addEventListener('click',()=>{
+      form.classList.add('open');
+    });
+    const button2 =document.querySelector('#close_button');
+    button2.addEventListener('click',()=>{
+      form.classList.add('close');
+    });
+        </script>
+</body>
+</html>
