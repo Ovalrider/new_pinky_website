@@ -5,13 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./clients-course-style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <title>Курси</title>
 </head>
 <body>
+    <header>
+        <div class="nav-container">
+            <nav>
+                <a href="#cites.ejs" class="makeupstudio">Pinky</a>
+
+                <ul class="nav-menu">
+                    <li><a href="#" class="links">наші послуги</a></li>
+                    <li><a href="#" class="links">про салон</a></li>
+                    <li><a href="#" class="links">відгуки</a></li>
+                    <li><a href="#" class="links">майстри</a></li>
+                    <li><a href="#" class="links">контакти</a></li>
+                </ul>
+                <button class="nav-menu-btn ">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <a href="#" class="btn bth-nav-menu">Увійти</a>
+            </nav>
+            <script>
+                let menuBtn = document.querySelector('.nav-menu-btn');
+                let menuNav = document.querySelector('.nav-menu');
+                menuBtn.addEventListener('click', function () {
+                    menuBtn.classList.toggle('active');
+                    menuNav.classList.toggle('open');
+                })
+            </script>
+            
+        </div>
+
+       
+    </header>
+    <div class="all-content">
     <div class="table_container">
-        <table>
+        <table class="clients_table">
             <thead>
                 <tr>
                     <th>Назва</th>
@@ -29,8 +62,8 @@
                        <td><%- element.phone %></td>
                        <td><%- element.deadline.toLocaleDateString() %></td>
                        <td>
-                        <a href="edit_course/<%= element._id %>"><span>Редагувати</span> </a>
-                        <a href="delete_course/<%= element._id %>"><span>Видалити</span</a>
+                        <a href="edit_course/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
+                        <a href="delete_course/<%= element._id %>"class="delete_button"><span>Видалити</span</a>
                        </td>
                     </tr>
                    <% }) %>
@@ -38,23 +71,25 @@
             
         </table>
     </div>
-    <button href="/" class="btn bth-nav-menu" id="fbutton">Додати клієнта</button>
+    <div class="container">
+    <button href="/" class="btn bth-nav-menu" id="fbutton">Додати клієнта</button></div>
     <div class="register-box" id="showform">
         <h2>Додати</h2> <button id="close_button">x</button>
         <form action="/add_course" role="form" method="post">       
             <div class="user-box"></div>
             <label for="courses">Оберіть курс:</label>
                 <select name="name" id="" >
-                <option type="text">Макіяж</option>
+                <option type="text">Базовий курс</option>
                 <option type="text">Макіяж для себе</option>
-                <option type="text">Курс підвищення кваліфікації</option>
+                <option type="text">Підвищення кваліфікації</option>
                 </select>
                 <div class="user-box"></div>
                 <label for="masters">Оберіть майстера:</label>
                 <select name="master" id="" >
-                <option type="text">Аліна</option>
-                <option type="text">Петя</option>
-                <option type="text">Вася</option>
+                    <option type="text">Аманда</option>
+                    <option type="text">Стефан</option>
+                    <option type="text">Анна</option>
+                    <option type="text">Вікторія</option>
                 </select>
                 <div class="user-box">
                     <input name="phone"  type="text" required>
@@ -76,6 +111,7 @@
             
 
         </form>
+    </div>
         <script>
             const button = document.querySelector('#fbutton');
     const form = document.querySelector('.register-box');
