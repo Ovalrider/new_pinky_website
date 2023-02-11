@@ -1,11 +1,11 @@
-import Client from "./model/Client.js"
+import Comment from "./model/Comment.js"
 
-class ClientController{
+class CommentController{
     async create(req,res){
         try{
-        const {name, phone, email, course, master} = req.body
-        const client = await Client.create({name, phone, email,course, master})
-        res.redirect('/clients')
+        const {name, service, master, review, rating } = req.body
+        const comment = await Comment.create({name, service, master, review, rating })
+        res.redirect('/comments')
         }
         catch(e){
             res.status(500).json(e)
@@ -14,14 +14,9 @@ class ClientController{
     }
     async getAll(req,res){
         try{
-            var data = await Client.find()
-            if (req.session.loggedin){
-                res.render('clients' , {clients : data , admin: true})
-            }else{
-                res.render('clients' , {clients : data , admin: false})
-            }
+            var data = await Comment.find()
             //res.redirect('/')
-           
+            res.render('comments' , {comments : data })
             return
         }
         catch(e){
@@ -35,8 +30,8 @@ class ClientController{
             if(!id){
                 return res.status(400).json("Not Found!")
             }
-            const client = await Client.findById(id)
-            res.render('edit_client', {client : client})
+            const comment = await Comment.findById(id)
+            res.render('edit_comment', {comment : comment})
             return 
         }
         catch(e){
@@ -46,10 +41,10 @@ class ClientController{
     }
     async update(req,res){
         try{
-            Client.findByIdAndUpdate({_id:req.params.id}, req.body, (err, docs) =>{
+            Comment.findByIdAndUpdate({_id:req.params.id}, req.body, (err, docs) =>{
                 if(err) {throw err}
                 else{
-                    res.redirect('/clients')
+                    res.redirect('/comments')
                 }
             })
         }
@@ -59,10 +54,10 @@ class ClientController{
     }
     async delete(req,res){
         try{
-            Client.findByIdAndDelete({_id:req.params.id}, req.body, (err, docs) =>{
+            Comment.findByIdAndDelete({_id:req.params.id}, req.body, (err, docs) =>{
                 if(err) {throw err}
                 else{
-                    res.redirect('/clients')
+                    res.redirect('/comments')
                 }
             })
         }
@@ -72,4 +67,4 @@ class ClientController{
     }
 }
 
-export default new ClientController();
+export default new CommentController();
