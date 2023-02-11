@@ -15,8 +15,13 @@ class ClientController{
     async getAll(req,res){
         try{
             var data = await Client.find()
+            if (req.session.loggedin){
+                res.render('clients' , {clients : data , admin: true})
+            }else{
+                res.render('clients' , {clients : data , admin: false})
+            }
             //res.redirect('/')
-            res.render('clients' , {clients : data })
+           
             return
         }
         catch(e){

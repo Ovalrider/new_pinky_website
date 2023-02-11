@@ -2,7 +2,9 @@ import express from 'express'
 import mongoose from 'mongoose'
 import router from './router.js';
 import path from 'path';
+import session from 'express-session';
 import bodyParser from 'body-parser';
+
 import { fileURLToPath } from 'url';
 
 const PORT = 3000;
@@ -21,13 +23,20 @@ async function StartApp(){
         console.log(e);
     }
 }
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: false
+}));
 app.use(express.json());
 app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use('/', router)
 app.set("view engine", "ejs");
-app.get('/', function(req, res){res.render('cites')})
+app.get('/', function(req, res){
+    res.render('cites')
+})   
 //app.get('/clients', function(req, res){res.render('clients')})
 
 

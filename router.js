@@ -2,6 +2,8 @@ import Router from "express";
 import ClientController from "./ClientController.js";
 import CourseController from "./CourseController.js";
 import CommentController from "./CommentController.js"
+import LoginController from "./LoginController.js";
+import Login from "./model/Login.js";
 
 const router = new Router()
 
@@ -26,4 +28,29 @@ router.get('/comments',CommentController.getAll)
 router.get('/edit_comment/:id', CommentController.getOne)
 router.post('/edit_comment/:id', CommentController.update)
 router.get('/delete_comment/:id',CommentController.delete)
+
+router.post('/auth', async function(request, response) {
+	let username = request.body.username;
+	let pass = request.body.password;
+	if (username && pass) {
+        const users = await Login.find()
+            if (username == users[0].name && pass ==users[0].password){
+            request.session.loggedin = true;
+			request.session.username = username;
+            response.redirect('back')
+        }
+        else {
+            request.session.loggedin = false;
+            response.send('Incorrect Username and/or Password!');
+            response.end()
+        }
+	} 
+});
+
+router.get('/logout',(req,res)=>{
+    req.session.loggedin = false;
+    res.redirect('back');
+    //req.session.destroy(function (err) {
+    // });
+  })
 export default router;
