@@ -45,10 +45,11 @@ nav li{
     margin : 0 0.7em;
 }
 .table_container{
-    
+   
     max-width: 1200px;
     margin: auto;
     padding: 0 15px;
+    
 }
 .container{
     position:relative;
@@ -68,20 +69,26 @@ nav li{
     border: 2px #42a3c3 solid;
     border-radius: 10px;
 }
+.clients_table tr:hover{
+    background-color:rgba(255,255,255,0.1); 
+}
 th{
    
     padding: 10px;
     font-size: 1em;
 }
 .clients_table tr:nth-child(even){
-    background: radial-gradient(rgb(17, 58, 80),rgba(17, 58, 80,1));
+    background: radial-gradient(rgb(67, 115, 143),rgba(67, 115, 143,0.1));
+    transition: all 0.3s;
+}
+.clients_table tr:hover:nth-child(even){
+    background-color: rgba(255,255,255,0.1); 
+  
 }
 .clients_table tr{
     transition: all 0.3s;
 }
-.clients_table tr:hover{
-    background-color:rgba(255,255,255,0.1); 
-}
+
 td{
     background: radial-gradient(rgb(17,68,96),rgba(17,68,96,0.1));
     padding: 10px;
@@ -91,7 +98,7 @@ td{
     margin-left: 1em;
     margin-right: 1em;
     background: none;
-    border: 1px #284b60 solid;
+    border: 1px #3e657c solid;
     width: 100%;
     padding: 1em 1em;
     border-radius: 8px;
@@ -99,10 +106,11 @@ td{
     cursor: pointer;
     transition: 0.3s;
 }
+
 .delete_button{
     margin-right: 1em;
     background: none;
-    border: 1px #284b60 solid;
+    border: 1px #3e657c solid;
     width: 100%;
     padding: 1em 1em;
     border-radius: 8px;
@@ -373,5 +381,40 @@ td{
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 2em;
+    }
+    @media (max-width:1170px){
+        .clients_table{
+            white-space: nowrap;
+        }
+        .table-2{
+        display:block;
+        width: 100%;
+    }
+    .table-2 thead,
+    .table-2 tbody,
+    .table-2 thead th{
+        display:block;
+    }
+    .table-2 thead{
+        float:left;
+
+    }
+    .table-2 tbody{
+        overflow-x: auto;
+    }
+    .table-2 tbody tr{
+       display: table-cell;
+       border-right: 1px #42a3c3 solid;
+    }
+    .table-2 tbody tr:nth-last-child(){
+        border-right: none;
+    }
+    .table-2 td{
+        display: block;
+    }
+   .clients_table .table-2{
+        border-right: none;
+    }
+
     }
    
