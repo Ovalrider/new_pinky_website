@@ -31,12 +31,12 @@
                 </button>
                 <% if (admin) { %>
                     <div class="container">
-                        <a href="/logout" class="btn bth-nav-menu" >Вийти</a>
+                        <a href="/logout" class="btn bth-nav-menu">Вийти</a>
                     </div>
-                 <% } else { %>
-                    <button href="/" class="btn bth-nav-menu"  id="fbutton">Увійти</button>
-                <% } %>
-                
+                    <% } else { %>
+                        <button href="/" class="btn bth-nav-menu" id="logbutton" onclick="LogformOpen()">Увійти</button>
+                        <% } %>
+
             </nav>
             <script>
                 let menuBtn = document.querySelector('.nav-menu-btn');
@@ -58,16 +58,16 @@
                     <tr>
                         <th>Ім'я</th>
                         <% if (admin) { %>
-                        <th>Пошта</th>
-                        <th>Номер телефону</th>
-                        <% } %>
-                        
-                        <th>Послуга</th>
-                        <th>Майстер</th>
-                        <% if (admin) { %>
-                        <th>Модифікувати</th>
-                        <% } %>
-                        
+                            <th>Пошта</th>
+                            <th>Номер телефону</th>
+                            <% } %>
+
+                                <th>Послуга</th>
+                                <th>Майстер</th>
+                                <% if (admin) { %>
+                                    <th>Модифікувати</th>
+                                    <% } %>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -77,18 +77,20 @@
                             <% if (admin) { %>
                                 <td><%- element.email %></td>
                                 <td><%- element.phone %></td>
-                            <% } %>
-                            
-                            <td><%- element.course %></td>
-                            <td><%- element.master %></td>
-                            <% if (admin) { %>
-                                <td>
-                                    <a href="edit_client/<%= element._id %>" class="edit_button"><span>Редагувати</span>
-                                    </a>
-                                    <a href="delete_client/<%= element._id %>" class="delete_button"><span>Видалити</span</a>
-                                </td>
-                            <% } %>
-                            
+                                <% } %>
+
+                                    <td><%- element.course %></td>
+                                    <td><%- element.master %></td>
+                                    <% if (admin) { %>
+                                        <td>
+                                            <a href="edit_client/<%= element._id %>"
+                                                class="edit_button"><span>Редагувати</span>
+                                            </a>
+                                            <a href="delete_client/<%= element._id %>"
+                                                class="delete_button"><span>Видалити</span></a>
+                                        </td>
+                                        <% } %>
+
                         </tr>
                         <% }) %>
                 </tbody>
@@ -96,10 +98,10 @@
             </table>
         </div>
         <div class="container">
-            <button href="/" class="btn bth-nav-menu" id="fbutton">Записатись на курс</button>
+            <button href="/" class="btn bth-nav-menu" onclick="RformOpen()" id="fbutton">Записатись на макіяж</button>
         </div>
         <div class="register-box" id="showform">
-            <h2>Анкета</h2> <button id="close_button" href="/">x</button>
+            <h2>Анкета</h2> <button id="close_button" onclick="RformClose()" href="/">x</button>
             <form action="/add_client" role="form" method="post">
                 <div class="user-box">
                     <input name="name" type="text" required>
@@ -142,87 +144,108 @@
         </form>
     </div>
     <script>
-        const button = document.querySelector('#fbutton');
+        function RformOpen(){
         const form = document.querySelector('.register-box');
-        button.addEventListener('click', () => {
+          form.classList.remove('close');
             form.classList.add('open');
-        });
-        const button2 = document.querySelector('#close_button');
-        button2.addEventListener('click', () => {
+        }
+        function RformClose (){
+            const form = document.querySelector('.register-box');
+        
+            
             form.classList.add('close');
-            window.location.href="/clients"
-        });
+            form.classList.remove('open');
+          
+        }
     </script>
     <div class="register-box" id="showform">
-            <h2>Анкета</h2> <button id="close_button" href="/">x</button>
-            <form action="/add_client" role="form" method="post">
-                <div class="user-box">
-                    <input name="name" type="text" required>
-                    <label>Прізвище та ім'я</label>
-                </div>
-                <div class="user-box">
-                    <input name="email" type="email" required>
-                    <label>Пошта</label>
-                </div>
-                <div class="user-box">
-                    <input name="phone" type="text" required>
-                    <label>Номер телефону</label>
-                </div>
-                <div class="user-box"></div>
-                <label for="courses">Оберіть послугу:</label>
-                <select name="course" id="">
-                    <option type="text">Вечірній макіяж</option>
-                    <option type="text">Повсякденний макіяж</option>
-                    <option type="text">Весільний макіяж</option>
-                </select>
-                <div class="user-box"></div>
-                <label for="masters">Оберіть майстера:</label>
-                <select name="master" id="">
-                    <option type="text">Аманда</option>
-                    <option type="text">Стефан</option>
-                    <option type="text">Анна</option>
-                    <option type="text">Вікторія</option>
-                </select>
-                <button>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Зберегти
-                </button>
+        <h2>Анкета</h2> <button id="close_button" href="/">x</button>
+        <form action="/add_client" role="form" method="post">
+            <div class="user-box">
+                <input name="name" type="text" required>
+                <label>Прізвище та ім'я</label>
+            </div>
+            <div class="user-box">
+                <input name="email" type="email" required>
+                <label>Пошта</label>
+            </div>
+            <div class="user-box">
+                <input name="phone" type="text" required>
+                <label>Номер телефону</label>
+            </div>
+            <div class="user-box"></div>
+            <label for="courses">Оберіть послугу:</label>
+            <select name="course" id="">
+                <option type="text">Вечірній макіяж</option>
+                <option type="text">Повсякденний макіяж</option>
+                <option type="text">Весільний макіяж</option>
+            </select>
+            <div class="user-box"></div>
+            <label for="masters">Оберіть майстера:</label>
+            <select name="master" id="">
+                <option type="text">Аманда</option>
+                <option type="text">Стефан</option>
+                <option type="text">Анна</option>
+                <option type="text">Вікторія</option>
+            </select>
+            <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Зберегти
+            </button>
 
-        </div>
-
-
-        </form>
     </div>
-    <form action="/auth" role="form" method="post">
-        <div class="user-box">
-            <input name="username" type="text" id="username" required>
-            <label>Прізвище та ім'я</label>
-        </div>
-        </div>
-        <div class="user-box">
-            <input name="password" type="text" id="password" required>
-            <label>Номер телефону</label>
-        </div>
-        
-        <button>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Зберегти
-        </button>
-
-</div>
 
 
-</form>
-<% if (admin) { %>
+    </form>
+    </div>
+    <div class="register-box" id="adminform">
+        <h2>Введіть дані</h2> <button id="close_button" onclick="LogformClose()" class="close_buttons">x</button>
+        <form action="/auth" role="form" method="post">
+            <div class="user-box">
+                <input name="username" type="text" id="username" required>
+                <label>Прізвище та ім'я</label>
+            </div>
     
-<% } %>
+            <div class="user-box">
+                <input name="password" type="text" id="password" required>
+                <label>Номер телефону</label>
+            </div>
+    
+            <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Зберегти
+            </button>
+    
+    
 
+
+    </form>
+    <% if (admin) { %>
+
+        <% } %>
+    </div>
+</div>
+</div>
 </body>
-
+<script>
+    const button3 = document.querySelector('#logbutton');
+    const form3 = document.querySelector('.register-box');
+   function LogformOpen(){
+    
+    button3.addEventListener('click', () => {
+        form3.classList.add('open');
+    });}
+    function LogformClose(){
+    const button4 = document.querySelector('.close_button');
+    button4.addEventListener('click', () => {
+        form3.classList.add('close');
+       
+    });}
+</script>
 </html>

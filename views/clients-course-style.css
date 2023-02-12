@@ -417,4 +417,13 @@ td{
     }
 
     }
-   
+    .close_buttons{
+        background-color: rgba(28,28,28,0);
+        border:none;
+        color:#03e9f4;
+        margin-left: 12em;
+    }
+    
+    .close_buttons.close{
+        display: none;
+    }
