@@ -53,7 +53,6 @@ nav li{
 }
 .container{
     position:relative;
-    margin: auto;
     padding: 0 15px;
     max-width: 1200px;
    
@@ -137,7 +136,7 @@ td{
         width: 400px;
         padding: 40px;
         transform: translate(-50%,-50%);
-        background: rgba(0, 0, 0, 0.65);
+        background: rgba(0, 0, 0, 0.85);
         box-sizing: border-box;
         box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
         border-radius: 10px;
@@ -147,6 +146,12 @@ td{
         display: block;
     }
     .register-box.close{
+        display: none;
+    }
+    .register-box.box2.open{
+        display: block;
+    }
+    .register-box.box2.close{
         display: none;
     }
     @keyframes fadeIn{
@@ -167,17 +172,31 @@ td{
     .register-box .user-box{
         position:relative;
     }
+    .register-box .user-box.box input{
+        margin-bottom: 60px;
+    }
+    .register-box .user-box.box label{
+        position:absolute;
+        top:-2em;
+        left:0;
+        padding: 10px 0;
+        font-size: 16px;
+        color:#fff;
+        pointer-events:none;
+        transition: .5s;
+    }
     .register-box .user-box input{
         width:100%;
         padding: 10px 0;
         font-size: 16px;
         color: #fff;
-        margin-bottom: 30px;
+        margin-bottom: 60px;
         border:none;
         border-bottom: 1px solid #fff;
         outline: none;
         background: transparent;
     }
+    
     .register-box .user-box label {
     position:absolute;
     top:0;
@@ -298,9 +317,10 @@ td{
             bottom:100%;
         }
     }
+    
     .container .bth-nav-menu{
-
-        right: 20px;
+       
+        right: 5pt;
         position: absolute;
         top: 1.5em;
     }
@@ -427,3 +447,70 @@ td{
     .close_buttons.close{
         display: none;
     }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 0 !important;
+            background: rgba(0, 0, 0, 0.95);
+            flex: 1;
+            padding: 0 0.5em;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            font-family: Helvetica, sans-serif;
+    }
+    option::selection {
+        background-color: #1de7ea;
+    }
+    select::-ms-expand{
+        display:none;
+    }
+    .select{
+        position: relative;
+        display: flex;
+        width:13em;
+        height: 3em;
+        line-height: 3;
+        background: rgba(28,28,28,0);
+        overflow: hidden;
+        border-radius: .25em;
+        margin-bottom: 1em;
+    }
+
+    .select::after{
+        content:"\25BC";
+        position: absolute;
+        top:0;
+        right: 0;
+        padding: 0 1em;
+        background:rgba(28,28,28,0);
+        cursor: pointer;
+        pointer-events: none;
+        transition: .25s all ease;
+        color:#1de7ea;
+    }
+    .select:hover::after{
+        color:#fff;
+
+    }
+    .btn.bth-nav-menu2 {
+
+    border: 1px #1de7ea solid;
+    color: #fff;
+    background-color: rgba(28,28,28,0);
+    padding: 0.7em 2em;
+    border-radius: 0.3em;
+    text-transform: uppercase;
+    transition: 0.3s;
+    margin-left: 0;
+
+}
+.btn.bth-nav-menu2:hover {
+
+    background:rgba(255,255,255,.3);
+        color: #fff;
+}

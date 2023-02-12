@@ -31,10 +31,11 @@
                 </button>
                 <% if (admin || user) { %>
                     <div class="container">
-                        <a href="/logout" class="btn bth-nav-menu">Вийти</a>
+                        <a href="/logout" class="btn bth-nav-menu2">Вийти</a>
                     </div>
                     <% } else { %>
-                        <button href="/" class="btn bth-nav-menu" id="logbutton" onclick="LogformOpen()">Увійти</button>
+                       
+                        <button href="/" class="btn bth-nav-menu" id="logbutton" onclick="LogformOpen1()" >Увійти</button>
                         <% } %>
 
             </nav>
@@ -97,11 +98,14 @@
 
             </table>
         </div>
+        <% if (admin || user) { %>
         <div class="container">
-            <button href="/" class="btn bth-nav-menu" id="fbutton">Записатись на курс</button>
+
+            <div class="button_container">
+            <button href="/" class="btn bth-nav-menu" onclick="LogformOpen()" id="fbuton">Записатись на макіяж</button></div>
         </div>
         <div class="register-box" id="showform">
-            <h2>Анкета</h2> <button id="close_button" href="/">x</button>
+            <h2>Анкета</h2> <button id="close_button" onclick="LogformClose()" href="/">x</button>
             <form action="/add_client" role="form" method="post">
                 <div class="user-box">
                     <input name="name" type="text" required>
@@ -115,21 +119,24 @@
                     <input name="phone" type="text" required>
                     <label>Номер телефону</label>
                 </div>
-                <div class="user-box"></div>
-                <label for="courses">Оберіть послугу:</label>
-                <select name="course" id="">
-                    <option type="text">Вечірній макіяж</option>
-                    <option type="text">Повсякденний макіяж</option>
-                    <option type="text">Весільний макіяж</option>
-                </select>
-                <div class="user-box"></div>
-                <label for="masters">Оберіть майстера:</label>
-                <select name="master" id="">
-                    <option type="text">Аманда</option>
-                    <option type="text">Стефан</option>
-                    <option type="text">Анна</option>
-                    <option type="text">Вікторія</option>
-                </select>
+                <div class="select">
+                    <select name="services" id="format">
+                        <option selected disabled>Оберіть послугу</option>
+                        <option type="text">Вечірній макіяж</option>
+                        <option type="text">Повсякденний макіяж</option>
+                        <option type="text">Весільний макіяж</option>
+                    </select>
+                </div>
+                <div class="select">
+
+                    <select name="master" id="format">
+                        <option selected disabled>Оберіть майстра</option>
+                        <option type="text">Аманда</option>
+                        <option type="text">Стефан</option>
+                        <option type="text">Анна</option>
+                        <option type="text">Вікторія</option>
+                    </select>
+                </div>
                 <button>
                     <span></span>
                     <span></span>
@@ -138,78 +145,40 @@
                     Зберегти
                 </button>
 
-    </div>
+        </div>
 
 
         </form>
     </div>
     <script>
-        const button = document.querySelector('#fbutton');
         const form = document.querySelector('.register-box');
-        button.addEventListener('click', () => {
+        function LogformOpen() {
+            const form = document.querySelector('.register-box');
+            form.classList.remove('close');
             form.classList.add('open');
-        });
-        const button2 = document.querySelector('#close_button');
-        button2.addEventListener('click', () => {
+        }
+       
+        function LogformClose() {
+            const form = document.querySelector('.register-box');
+            form.classList.remove('open');
             form.classList.add('close');
-            window.location.href="/clients"
-        });
+           
+        }
     </script>
-    <div class="register-box" id="showform">
-            <h2>Анкета</h2> <button id="close_button" href="/">x</button>
-            <form action="/add_client" role="form" method="post">
-                <div class="user-box">
-                    <input name="name" type="text" required>
-                    <label>Прізвище та ім'я</label>
-                </div>
-                <div class="user-box">
-                    <input name="email" type="email" required>
-                    <label>Пошта</label>
-                </div>
-                <div class="user-box">
-                    <input name="phone" type="text" required>
-                    <label>Номер телефону</label>
-                </div>
-                <div class="user-box"></div>
-                <label for="courses">Оберіть послугу:</label>
-                <select name="course" id="">
-                    <option type="text">Вечірній макіяж</option>
-                    <option type="text">Повсякденний макіяж</option>
-                    <option type="text">Весільний макіяж</option>
-                </select>
-                <div class="user-box"></div>
-                <label for="masters">Оберіть майстера:</label>
-                <select name="master" id="">
-                    <option type="text">Аманда</option>
-                    <option type="text">Стефан</option>
-                    <option type="text">Анна</option>
-                    <option type="text">Вікторія</option>
-                </select>
-                <button>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Зберегти
-                </button>
-
-        </div>
-
-
-        </form>
-    </div>
+   <% } %>
+    <div class="register-box box2" id="showform">
     <form action="/auth" role="form" method="post">
         <div class="user-box">
             <input name="username" type="text" id="username" required>
-            <label>Прізвище та ім'я</label>
+            <label>Логін</label>
         </div>
-        </div>
+
         <div class="user-box">
             <input name="password" type="text" id="password" required>
-            <label>Номер телефону</label>
+            <label>Пароль</label>
         </div>
-        
-        <button>
+
+        <button onclick="LogformClose1()">
             <span></span>
             <span></span>
             <span></span>
@@ -217,28 +186,23 @@
             Зберегти
         </button>
 
-</div>
+       
 
+    </form>
+    <% if (admin) { %>
 
-</form>
-<% if (admin) { %>
-    
-<% } %>
+        <% } %>
+    </div>
 
 </body>
 <script>
-    const button3 = document.querySelector('#logbutton');
-    const form3 = document.querySelector('.register-box');
-   function LogformOpen(){
+    function LogformOpen1() {
+        const form3 = document.querySelector('.register-box.box2');
+        form3.classList.remove('close');
+            form3.classList.add('open');
     
-    button3.addEventListener('click', () => {
-        form3.classList.add('open');
-    });}
-    function LogformClose(){
-    const button4 = document.querySelector('.close_button');
-    button4.addEventListener('click', () => {
-        form3.classList.add('close');
-       
-    });}
+    }
+   
 </script>
+
 </html>

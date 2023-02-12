@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <title>Курси</title>
 </head>
+
 <body>
     <header>
         <div class="nav-container">
@@ -29,11 +31,11 @@
                 </button>
                 <% if (admin || user) { %>
                     <div class="container">
-                        <a href="/logout" class="btn bth-nav-menu" >Вийти</a>
+                        <a href="/logout" class="btn bth-nav-menu2">Вийти</a>
                     </div>
-                 <% } else { %>
-                    <button href="/" class="btn bth-nav-menu"  id="fbutton">Увійти</button>
-                <% } %>
+                    <% } else { %>
+                        <button class="btn bth-nav-menu" id="fbutton" onclick="LogformOpen4()">Увійти</button>
+                        <% } %>
             </nav>
             <script>
                 let menuBtn = document.querySelector('.nav-menu-btn');
@@ -43,121 +45,142 @@
                     menuNav.classList.toggle('open');
                 })
             </script>
-            
+
         </div>
 
-       
+
     </header>
     <div class="all-content">
-    <div class="table_container">
-        <table class="courses_table">
-            <thead>
-                <tr>
-                    <th>Назва</th>
-                    <th>Майстер</th>
-                    <th>Контакти</th>
-                    <th>Дедлайн подачі заявки</th>
-                    <% if (admin) { %>
-                        <th>Модифікувати</th>
-                    <% } %>
-                </tr>
-            </thead>
-            <tbody>
-                <% courses.forEach(element => { %>
+        <div class="table_container">
+            <table class="clients_table table-2">
+                <thead>
                     <tr>
-                       <td><%- element.name %></td>
-                       <td><%- element.master %></td>
-                       <td><%- element.phone %></td>
-                       <td><%- element.deadline.toLocaleDateString() %></td>
-                       <% if (admin) { %>
-                        <td>
-                            <a href="edit_course/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
-                            <a href="delete_course/<%= element._id %>"class="delete_button"><span>Видалити</span</a>
-                           </td>
-                       <% } %>
+                        <th>Назва</th>
+                        <th>Майстер</th>
+                        <th>Контакти</th>
+                        <th>Дедлайн подачі заявки</th>
+                        <% if (admin) { %>
+                            <th>Модифікувати</th>
+                            <% } %>
                     </tr>
-                   <% }) %>
-            </tbody>
-            
-        </table>
+                </thead>
+                <tbody>
+                    <% courses.forEach(element=> { %>
+                        <tr>
+                            <td><%- element.name %></td>
+                            <td><%- element.master %></td>
+                            <td><%- element.phone %></td>
+                            <td><%- element.deadline.toLocaleDateString() %></td>
+                            <% if (admin) { %>
+                                <td>
+                                    <a href="edit_course/<%= element._id %>" class="edit_button"><span>Редагувати</span>
+                                    </a>
+                                    <a href="delete_course/<%= element._id %>" class="delete_button"><span>Видалити
+                                            </span></a>
+                                </td>
+                                <% } %>
+                        </tr>
+                        <% }) %>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="register-box box2">
+            <form action="/auth" role="form" method="post">
+                <div class="user-box">
+                    <input name="username" type="text" id="username" required>
+                    <label>Логін</label>
+                </div>
+
+                <div class="user-box">
+                    <input name="password" type="text" id="password" required>
+                    <label>Пароль</label>
+                </div>
+
+                <button onclick="LogformClose4()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Зберегти
+                </button>
+            </form>
+        </div>
     </div>
-    <form action="/auth" role="form" method="post">
-        <div class="user-box">
-            <input name="username" type="text" id="username" required>
-            <label>Прізвище та ім'я</label>
-        </div>
-        </div>
-        <div class="user-box">
-            <input name="password" type="text" id="password" required>
-            <label>Номер телефону</label>
-        </div>
+    <script>
+            
+        function LogformOpen4() {
+            const form5 = document.querySelector('.register-box.box2');
+            form5.classList.remove('close');
+                form5.classList.add('open');
         
-        <button>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Зберегти
-        </button>
-
-</div>
-
-
-</form>
+        }  function LogformClose4() {
+                const form5 = document.querySelector('.register-box.box2');
+                form5.classList.remove('open');
+                form5.classList.add('close');
+               
+            }
+            </script>
     <% if (admin) { %>
-        <button href="/" class="btn bth-nav-menu" id="fbutton">Додати курс</button></div>
+        <button href="/" class="btn bth-nav-menu" onclick="LogformOpen2()" id="buttons">Додати курс</button></div>
         <div class="register-box" id="showform">
-            <h2>Додати</h2> <button id="close_button">x</button>
-            <form action="/add_course" role="form" method="post">       
-                <div class="user-box"></div>
-                <label for="courses">Оберіть курс:</label>
-                    <select name="name" id="" >
-                    <option type="text">Базовий курс</option>
-                    <option type="text">Макіяж для себе</option>
-                    <option type="text">Підвищення кваліфікації</option>
+            <h2>Додати</h2> <button id="close_button" onclick="LogformClose2()">x</button>
+            <form action="/add_course" role="form" method="post">
+                <div class="select">
+                    <select name="name" id="">
+                        <option selected disabled>Оберіть курс</option>
+                        <option type="text">Базовий курс</option>
+                        <option type="text">Макіяж для себе</option>
+                        <option type="text">Підвищення кваліфікації</option>
                     </select>
-                    <div class="user-box"></div>
-                    <label for="masters">Оберіть майстера:</label>
-                    <select name="master" id="" >
+                </div>
+                <div class="select">
+                    <select name="master" id="">
+                        <option selected disabled>Оберіть майстра</option>
                         <option type="text">Аманда</option>
                         <option type="text">Стефан</option>
                         <option type="text">Анна</option>
                         <option type="text">Вікторія</option>
                     </select>
-                    <div class="user-box">
-                        <input name="phone"  type="text" required>
-                        <label>Номер телефону</label>
-                    </div>
-                    <div class="user-box">
-                        <input name="deadline"  type="date" required >
-                        <label>Дедлайн</label>
-                    </div>
-                    <button>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Зберегти
-                    </button>
-    
                 </div>
-                
-    
-            </form>
+                <div class="user-box">
+                    <input name="phone" type="text" required>
+                    <label>Номер телефону</label>
+                </div>
+                <div class="user-box box">
+
+                    <input name="deadline" type="date" required>
+                    <label>Дедлайн</label>
+                </div>
+                <button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Зберегти
+                </button>
+
         </div>
-            <script>
-                const button = document.querySelector('#fbutton');
-        const form = document.querySelector('.register-box');
-        button.addEventListener('click',()=>{
-          form.classList.add('open');
-        });
-        const button2 =document.querySelector('#close_button');
-        button2.addEventListener('click',()=>{
-          form.classList.add('close');
-          window.location.href="/courses"
-        });
-            </script>
-    <% } %>
-   
+
+
+        </form>
+        </div>
+        <script>
+            
+    function LogformOpen2() {
+        const form5 = document.querySelector('.register-box');
+        form5.classList.remove('close');
+            form5.classList.add('open');
+    
+    }  function LogformClose2() {
+            const form5 = document.querySelector('.register-box');
+            form5.classList.remove('open');
+            form5.classList.add('close');
+           
+        }
+        </script>
+        <% } %>
+
 </body>
+
 </html>
