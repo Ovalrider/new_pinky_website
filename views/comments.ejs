@@ -26,7 +26,13 @@
                     <span></span>
                     <span></span>
                 </button>
-                <a href="#" class="btn bth-nav-menu">Увійти</a>
+                <% if (admin || user) { %>
+                    <div class="container">
+                        <a href="/logout" class="btn bth-nav-menu" >Вийти</a>
+                    </div>
+                 <% } else { %>
+                    <button href="/" class="btn bth-nav-menu"  id="fbutton">Увійти</button>
+                <% } %>
             </nav>
             <script>
                 let menuBtn = document.querySelector('.nav-menu-btn');
@@ -51,7 +57,9 @@
                     <th>Майстер</th>
                     <th>Відгук</th>
                     <th>Оцінка</th>
-                    <th>Модифікувати</th>
+                    <% if (admin) { %>
+                        <th>Модифікувати</th>
+                    <% } %>
                 </tr>
             </thead>
             <tbody>
@@ -62,72 +70,101 @@
                        <td><%- element.master %></td>
                        <td><%- element.review %></td>
                        <td><%- element.rating %>/5</td>
-                       <td>
-                        <a href="edit_comment/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
-                        <a href="delete_comment/<%= element._id %>"class="delete_button"><span>Видалити</span</a>
-                       </td>
+                       <% if (admin) { %>
+                        <td>
+                            <a href="edit_comment/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
+                            <a href="delete_comment/<%= element._id %>"class="delete_button"><span>Видалити</span</a>
+                           </td>
+                       <% } %>
                     </tr>
                    <% }) %>
             </tbody>
             
         </table>
     </div>
-    <div class="container">
-    <button href="/" class="btn bth-nav-menu" id="fbutton">Додати коментар</button></div>
-    <div class="register-box" id="showform">
-        <h2>Додати</h2> <button id="close_button">x</button>
-        <form action="/add_comment" role="form" method="post">
-            <div class="user-box">
-                <input name="name" type="text" required>
-                <label>Ім'я</label>
-            </div>       
-            <div class="user-box"></div>
-            <label for="services">Оберіть послугу:</label>
-                <select name="service" id="" >
-                <option type="text">Перша</option>
-                <option type="text">Друга</option>
-                <option type="text">Третя</option>
-                </select>
-                <div class="user-box"></div>
-                <label for="masters">Оберіть майстера:</label>
-                <select name="master" id="" >
-                    <option type="text">Аманда</option>
-                    <option type="text">Стефан</option>
-                    <option type="text">Анна</option>
-                    <option type="text">Вікторія</option>
-                </select>
-                <div class="user-box">
-                    <input name="review"  type="text" maxlength="50" required>
-                    <label>Відгук</label>
-                </div>
-                <div class="user-box">
-                    <input name="rating"  type="number" min="1" max="5" step="0.5" required >
-                    <label>Оцінка</label>
-                </div>
-                <button>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Зберегти
-                </button>
-
+    <% if (user) { %>
+        <div class="container">
+            <button href="/" class="btn bth-nav-menu" id="fbutton">Додати коментар</button></div>
+            <div class="register-box" id="showform">
+                <h2>Додати</h2> <button id="close_button">x</button>
+                <form action="/add_comment" role="form" method="post">
+                    <div class="user-box">
+                        <input name="name" type="text" required>
+                        <label>Ім'я</label>
+                    </div>       
+                    <div class="user-box"></div>
+                    <label for="services">Оберіть послугу:</label>
+                        <select name="service" id="" >
+                        <option type="text">Перша</option>
+                        <option type="text">Друга</option>
+                        <option type="text">Третя</option>
+                        </select>
+                        <div class="user-box"></div>
+                        <label for="masters">Оберіть майстера:</label>
+                        <select name="master" id="" >
+                            <option type="text">Аманда</option>
+                            <option type="text">Стефан</option>
+                            <option type="text">Анна</option>
+                            <option type="text">Вікторія</option>
+                        </select>
+                        <div class="user-box">
+                            <input name="review"  type="text" maxlength="50" required>
+                            <label>Відгук</label>
+                        </div>
+                        <div class="user-box">
+                            <input name="rating"  type="number" min="1" max="5" step="0.5" required >
+                            <label>Оцінка</label>
+                        </div>
+                        <button>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Зберегти
+                        </button>
+        
+                    </div>
+                    
+        
+                </form>
             </div>
-            
-
-        </form>
+                <script>
+                    const button = document.querySelector('#fbutton');
+            const form = document.querySelector('.register-box');
+            button.addEventListener('click',()=>{
+              form.classList.add('open');
+            });
+            const button2 =document.querySelector('#close_button');
+            button2.addEventListener('click',()=>{
+              form.classList.add('close');
+              window.location.href="/comments"
+            });
+                </script>
+        </div>
+    <% } %>
+    
+<form action="/auth" role="form" method="post">
+    <div class="user-box">
+        <input name="username" type="text" id="username" required>
+        <label>Прізвище та ім'я</label>
     </div>
-        <script>
-            const button = document.querySelector('#fbutton');
-    const form = document.querySelector('.register-box');
-    button.addEventListener('click',()=>{
-      form.classList.add('open');
-    });
-    const button2 =document.querySelector('#close_button');
-    button2.addEventListener('click',()=>{
-      form.classList.add('close');
-      window.location.href="/comments"
-    });
-        </script>
+    </div>
+    <div class="user-box">
+        <input name="password" type="text" id="password" required>
+        <label>Номер телефону</label>
+    </div>
+    
+    <button>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Зберегти
+    </button>
+
+</div>
+
+
+</form>
 </body>
 </html>
