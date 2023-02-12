@@ -16,7 +16,7 @@
                 <a href="/" class="makeupstudio">Pinky</a>
 
                 <ul class="nav-menu">
-                    <li><a href="/#our_services" class="links">наші послуги</a></li>
+                    <li><a href="/clients" class="links">Наші послуги</a></li>
                     <li><a href="/courses" class="links">наші курси</a></li>
                     <li><a href="/comments" class="links">відгуки</a></li>
                     <li><a href="/#masters" class="links">майстри</a></li>
@@ -27,7 +27,13 @@
                     <span></span>
                     <span></span>
                 </button>
-                <a href="#" class="btn bth-nav-menu">Увійти</a>
+                <% if (admin || user) { %>
+                    <div class="container">
+                        <a href="/logout" class="btn bth-nav-menu" >Вийти</a>
+                    </div>
+                 <% } else { %>
+                    <button href="/" class="btn bth-nav-menu"  id="fbutton">Увійти</button>
+                <% } %>
             </nav>
             <script>
                 let menuBtn = document.querySelector('.nav-menu-btn');
@@ -51,7 +57,9 @@
                     <th>Майстер</th>
                     <th>Контакти</th>
                     <th>Дедлайн подачі заявки</th>
-                    <th>Модифікувати</th>
+                    <% if (admin) { %>
+                        <th>Модифікувати</th>
+                    <% } %>
                 </tr>
             </thead>
             <tbody>
@@ -61,68 +69,95 @@
                        <td><%- element.master %></td>
                        <td><%- element.phone %></td>
                        <td><%- element.deadline.toLocaleDateString() %></td>
-                       <td>
-                        <a href="edit_course/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
-                        <a href="delete_course/<%= element._id %>"class="delete_button"><span>Видалити</span</a>
-                       </td>
+                       <% if (admin) { %>
+                        <td>
+                            <a href="edit_course/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
+                            <a href="delete_course/<%= element._id %>"class="delete_button"><span>Видалити</span</a>
+                           </td>
+                       <% } %>
                     </tr>
                    <% }) %>
             </tbody>
             
         </table>
     </div>
-    <div class="container">
-    <button href="/" class="btn bth-nav-menu" id="fbutton">Додати курс</button></div>
-    <div class="register-box" id="showform">
-        <h2>Додати</h2> <button id="close_button">x</button>
-        <form action="/add_course" role="form" method="post">       
-            <div class="user-box"></div>
-            <label for="courses">Оберіть курс:</label>
-                <select name="name" id="" >
-                <option type="text">Базовий курс</option>
-                <option type="text">Макіяж для себе</option>
-                <option type="text">Підвищення кваліфікації</option>
-                </select>
+    <form action="/auth" role="form" method="post">
+        <div class="user-box">
+            <input name="username" type="text" id="username" required>
+            <label>Прізвище та ім'я</label>
+        </div>
+        </div>
+        <div class="user-box">
+            <input name="password" type="text" id="password" required>
+            <label>Номер телефону</label>
+        </div>
+        
+        <button>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Зберегти
+        </button>
+
+</div>
+
+
+</form>
+    <% if (admin) { %>
+        <button href="/" class="btn bth-nav-menu" id="fbutton">Додати курс</button></div>
+        <div class="register-box" id="showform">
+            <h2>Додати</h2> <button id="close_button">x</button>
+            <form action="/add_course" role="form" method="post">       
                 <div class="user-box"></div>
-                <label for="masters">Оберіть майстера:</label>
-                <select name="master" id="" >
-                    <option type="text">Аманда</option>
-                    <option type="text">Стефан</option>
-                    <option type="text">Анна</option>
-                    <option type="text">Вікторія</option>
-                </select>
-                <div class="user-box">
-                    <input name="phone"  type="text" required>
-                    <label>Номер телефону</label>
+                <label for="courses">Оберіть курс:</label>
+                    <select name="name" id="" >
+                    <option type="text">Базовий курс</option>
+                    <option type="text">Макіяж для себе</option>
+                    <option type="text">Підвищення кваліфікації</option>
+                    </select>
+                    <div class="user-box"></div>
+                    <label for="masters">Оберіть майстера:</label>
+                    <select name="master" id="" >
+                        <option type="text">Аманда</option>
+                        <option type="text">Стефан</option>
+                        <option type="text">Анна</option>
+                        <option type="text">Вікторія</option>
+                    </select>
+                    <div class="user-box">
+                        <input name="phone"  type="text" required>
+                        <label>Номер телефону</label>
+                    </div>
+                    <div class="user-box">
+                        <input name="deadline"  type="date" required >
+                        <label>Дедлайн</label>
+                    </div>
+                    <button>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Зберегти
+                    </button>
+    
                 </div>
-                <div class="user-box">
-                    <input name="deadline"  type="date" required >
-                    <label>Дедлайн</label>
-                </div>
-                <button>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Зберегти
-                </button>
-
-            </div>
-            
-
-        </form>
-    </div>
-        <script>
-            const button = document.querySelector('#fbutton');
-    const form = document.querySelector('.register-box');
-    button.addEventListener('click',()=>{
-      form.classList.add('open');
-    });
-    const button2 =document.querySelector('#close_button');
-    button2.addEventListener('click',()=>{
-      form.classList.add('close');
-      window.location.href="/courses"
-    });
-        </script>
+                
+    
+            </form>
+        </div>
+            <script>
+                const button = document.querySelector('#fbutton');
+        const form = document.querySelector('.register-box');
+        button.addEventListener('click',()=>{
+          form.classList.add('open');
+        });
+        const button2 =document.querySelector('#close_button');
+        button2.addEventListener('click',()=>{
+          form.classList.add('close');
+          window.location.href="/courses"
+        });
+            </script>
+    <% } %>
+   
 </body>
 </html>

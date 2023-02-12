@@ -15,8 +15,13 @@ class CommentController{
     async getAll(req,res){
         try{
             var data = await Comment.find()
-            //res.redirect('/')
-            res.render('comments' , {comments : data })
+            if(req.session.loggedin && req.session.username == 'admin'){
+                res.render('comments' , {comments : data, admin: true, user:true })
+            }else if(req.session.loggedin && req.session.username != null && req.session.username != 'admin'){
+                res.render('comments' , {comments : data, admin: false, user:true })
+            }else{
+                res.render('comments' , {comments : data, admin: false, user:false })
+            }
             return
         }
         catch(e){

@@ -15,8 +15,14 @@ class CourseController{
     async getAll(req,res){
         try{
             var data = await Course.find()
-            //res.redirect('/')
-            res.render('courses' , {courses : data })
+            if(req.session.loggedin && req.session.username == 'admin'){
+                res.render('courses' , {courses : data , admin: true, user:true})
+            }else if(req.session.loggedin && req.session.username != null && req.session.username != 'admin'){
+                res.render('courses' , {courses : data, admin: false, user:true })
+            }
+            else{
+                res.render('courses' , {courses : data , admin: false, user:false})
+            }
             return
         }
         catch(e){

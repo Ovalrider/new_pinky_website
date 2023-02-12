@@ -15,10 +15,13 @@ class ClientController{
     async getAll(req,res){
         try{
             var data = await Client.find()
-            if (req.session.loggedin){
-                res.render('clients' , {clients : data , admin: true})
-            }else{
-                res.render('clients' , {clients : data , admin: false})
+            if (req.session.loggedin && req.session.username == 'admin'){
+                res.render('clients' , {clients : data , admin: true, user:true})
+            }else if(req.session.loggedin && req.session.username != null && req.session.username != 'admin'){
+                res.render('clients' , {clients : data , admin: false, user:true})
+            }
+            else{
+                res.render('clients' , {clients : data , admin: false, user:false})
             }
             //res.redirect('/')
            

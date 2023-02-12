@@ -34,13 +34,14 @@ router.post('/auth', async function(request, response) {
 	let pass = request.body.password;
 	if (username && pass) {
         const users = await Login.find()
-            if (username == users[0].name && pass ==users[0].password){
+            if ((username == users[0].name && pass ==users[0].password) || username == users[1].name && pass ==users[1].password){
             request.session.loggedin = true;
 			request.session.username = username;
             response.redirect('back')
         }
         else {
             request.session.loggedin = false;
+            request.session.username = null;
             response.send('Incorrect Username and/or Password!');
             response.end()
         }
