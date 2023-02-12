@@ -85,7 +85,7 @@
 
             </table>
         </div>
-        <div class="register-box box2">
+        <div class="register-box">
             <form action="/auth" role="form" method="post">
                 <div class="user-box">
                     <input name="username" type="text" id="username" required>
@@ -110,12 +110,12 @@
     <script>
             
         function LogformOpen4() {
-            const form5 = document.querySelector('.register-box.box2');
+            const form5 = document.querySelector('.register-box');
             form5.classList.remove('close');
                 form5.classList.add('open');
         
         }  function LogformClose4() {
-                const form5 = document.querySelector('.register-box.box2');
+                const form5 = document.querySelector('.register-box');
                 form5.classList.remove('open');
                 form5.classList.add('close');
                
@@ -123,7 +123,7 @@
             </script>
     <% if (admin) { %>
         <button href="/" class="btn bth-nav-menu" onclick="LogformOpen2()" id="buttons">Додати курс</button></div>
-        <div class="register-box" id="showform">
+        <div class="register-box box2" id="showform">
             <h2>Додати</h2> <button id="close_button" onclick="LogformClose2()">x</button>
             <form action="/add_course" role="form" method="post">
                 <div class="select">
@@ -166,14 +166,14 @@
         </form>
         </div>
         <script>
-            
+             const form5 = document.querySelector('.register-box.box2');
     function LogformOpen2() {
-        const form5 = document.querySelector('.register-box');
+        const form5 = document.querySelector('.register-box.box2');
         form5.classList.remove('close');
             form5.classList.add('open');
     
     }  function LogformClose2() {
-            const form5 = document.querySelector('.register-box');
+            const form5 = document.querySelector('.register-box.box2');
             form5.classList.remove('open');
             form5.classList.add('close');
            

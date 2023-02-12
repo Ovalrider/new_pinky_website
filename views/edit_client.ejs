@@ -10,7 +10,7 @@
     <title>Редагувати клієнта</title>
 </head>
 <body>
-    <button href="/" class="btn bth-nav-menu" id="fbutton">Замовити послугу</button>
+    <button href="/" class="btn bth-nav-menu" id="fbutton">Редагувати дані</button>
     <div class="register-box" id="showform">
         <h2>Оновити</h2> <button id="close_button">x</button>
         <form action="/edit_client/<%- client._id %>" role="form" method="post">
@@ -26,21 +26,25 @@
                 <input name="phone" value="<%- client.phone %>" type="text" required>
                 <label>Номер телефону</label>
             </div>
-            <div class="user-box"></div>
-            <label for="courses">Оберіть послугу:</label>
-                <select name="course" id="">
-                <option type="text">Вечірній макіяж</option>
-                <option type="text">Повсякденний макіяж</option>
-                <option type="text">Весільний макіяж</option>
+            
+            <div class="select">
+                <select name="services" id="format">
+                    <option selected disabled>Оберіть послугу</option>
+                    <option type="text">Вечірній макіяж</option>
+                    <option type="text">Повсякденний макіяж</option>
+                    <option type="text">Весільний макіяж</option>
                 </select>
-                <div class="user-box"></div>
-                <label for="masters">Оберіть майстера:</label>
-                <select name="master" id="" >
-                <option type="text">Аманда</option>
-                <option type="text">Стефан</option>
-                <option type="text">Анна</option>
-                <option type="text">Вікторія</option>
+            </div>
+            <div class="select">
+
+                <select name="master" id="format">
+                    <option selected disabled>Оберіть майстра</option>
+                    <option type="text">Аманда</option>
+                    <option type="text">Стефан</option>
+                    <option type="text">Анна</option>
+                    <option type="text">Вікторія</option>
                 </select>
+            </div>
                 <button type="submit">
                     <span></span>
                     <span></span>
