@@ -35,8 +35,12 @@ class CommentController{
             if(!id){
                 return res.status(400).json("Not Found!")
             }
-            const comment = await Comment.findById(id)
-            res.render('edit_comment', {comment : comment})
+            if(req.session.loggedin && req.session.username == 'admin'){
+                const comment = await Comment.findById(id)
+                res.render('edit_comment', {comment : comment})
+            }else{
+                res.send("<p>No Access!</p>")
+            }
             return 
         }
         catch(e){

@@ -38,8 +38,12 @@ class ClientController{
             if(!id){
                 return res.status(400).json("Not Found!")
             }
-            const client = await Client.findById(id)
-            res.render('edit_client', {client : client})
+            if(req.session.loggedin && req.session.username == 'admin'){
+                const client = await Client.findById(id)
+                res.render('edit_client', {client : client})
+            }else{
+                res.send("<p>No Access!</p>")
+            }
             return 
         }
         catch(e){
