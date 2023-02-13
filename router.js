@@ -2,7 +2,6 @@ import Router from "express";
 import ClientController from "./ClientController.js";
 import CourseController from "./CourseController.js";
 import CommentController from "./CommentController.js"
-import LoginController from "./LoginController.js";
 import Login from "./model/Login.js";
 
 const router = new Router()
@@ -51,7 +50,5 @@ router.post('/auth', async function(request, response) {
 router.get('/logout',(req,res)=>{
     req.session.loggedin = false;
     res.redirect('back');
-    //req.session.destroy(function (err) {
-    // });
   })
 export default router;
