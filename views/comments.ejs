@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <title>Відгуки</title>
 </head>
+
 <body>
     <header>
         <div class="nav-container">
@@ -28,11 +30,11 @@
                 </button>
                 <% if (admin || user) { %>
                     <div class="container">
-                        <a href="/logout" class="btn bth-nav-menu" >Вийти</a>
+                        <a href="/logout" class="btn bth-nav-menu2">Вийти</a>
                     </div>
-                 <% } else { %>
-                    <button href="/" class="btn bth-nav-menu"  id="fbutton">Увійти</button>
-                <% } %>
+                    <% } else { %>
+                        <button  class="btn bth-nav-menu" onclick="LogformOpen12()" id="fbutton">Увійти</button>
+                        <% } %>
             </nav>
             <script>
                 let menuBtn = document.querySelector('.nav-menu-btn');
@@ -42,129 +44,148 @@
                     menuNav.classList.toggle('open');
                 })
             </script>
-            
+
         </div>
 
-       
+
     </header>
     <div class="all-content">
-    <div class="table_container">
-        <table class="comments_table">
-            <thead>
-                <tr>
-                    <th>Ім'я</th>
-                    <th>Послуга</th>
-                    <th>Майстер</th>
-                    <th>Відгук</th>
-                    <th>Оцінка</th>
-                    <% if (admin) { %>
-                        <th>Модифікувати</th>
-                    <% } %>
-                </tr>
-            </thead>
-            <tbody>
-                <% comments.forEach(element => { %>
+        <div class="table_container">
+            <table class="clients_table table-2">
+                <thead>
                     <tr>
-                       <td><%- element.name %></td>
-                       <td><%- element.service %></td>
-                       <td><%- element.master %></td>
-                       <td><%- element.review %></td>
-                       <td><%- element.rating %>/5</td>
-                       <% if (admin) { %>
-                        <td>
-                            <a href="edit_comment/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
-                            <a href="delete_comment/<%= element._id %>"class="delete_button"><span>Видалити</span</a>
-                           </td>
-                       <% } %>
+                        <th>Ім'я</th>
+                        <th>Послуга</th>
+                        <th>Майстер</th>
+                        <th>Відгук</th>
+                        <th>Оцінка</th>
+                        <% if (admin) { %>
+                            <th>Модифікувати</th>
+                            <% } %>
                     </tr>
-                   <% }) %>
-            </tbody>
-            
-        </table>
-    </div>
-    <% if (user) { %>
-        <div class="container">
-            <button href="/" class="btn bth-nav-menu" id="fbutton">Додати коментар</button></div>
+                </thead>
+                <tbody>
+                    <% comments.forEach(element => { %>
+                        <tr>
+                            <td><%- element.name %></td>
+                            <td><%- element.service %></td>
+                            <td><%- element.master %></td>
+                            <td><%- element.review %></td>
+                            <td><%- element.rating %>/5</td>
+                            <% if (admin) { %>
+                                <td>
+                                    <a href="edit_comment/<%= element._id %>" class="edit_button"><span>Редагувати</span> </a>
+                                    <a href="delete_comment/<%= element._id %>"class="delete_button"><span>Видалити
+                                            </span</a>
+                                </td>
+                                <% } %>
+                        </tr>
+                        <% }) %>
+                </tbody>
+
+            </table>
+        </div>
+        <% if (user) { %>
+            <div class="container">
+                <button  class="btn bth-nav-menu" onclick="LogformOpen13()" id="fbutton">Додати коментар</button>
+            </div>
             <div class="register-box" id="showform">
-                <h2>Додати</h2> <button id="close_button">x</button>
+                <h2>Додати</h2> <button id="close_button" onclick="LogformClose13()">x</button>
                 <form action="/add_comment" role="form" method="post">
                     <div class="user-box">
                         <input name="name" type="text" required>
                         <label>Ім'я</label>
-                    </div>       
-                    <div class="user-box"></div>
-                    <label for="services">Оберіть послугу:</label>
-                        <select name="service" id="" >
-                        <option type="text">Перша</option>
-                        <option type="text">Друга</option>
-                        <option type="text">Третя</option>
+                    </div>
+                    <div class="select">
+                        <select name="service" id="format">
+                            <option selected disabled>Оберіть послугу</option>
+                            <option type="text">Вечірній макіяж</option>
+                            <option type="text">Повсякденний макіяж</option>
+                            <option type="text">Весільний макіяж</option>
                         </select>
-                        <div class="user-box"></div>
-                        <label for="masters">Оберіть майстера:</label>
-                        <select name="master" id="" >
+                    </div>
+                    <div class="select">
+    
+                        <select name="master" id="format">
+                            <option selected disabled>Оберіть майстра</option>
                             <option type="text">Аманда</option>
                             <option type="text">Стефан</option>
                             <option type="text">Анна</option>
                             <option type="text">Вікторія</option>
                         </select>
-                        <div class="user-box">
-                            <input name="review"  type="text" maxlength="50" required>
-                            <label>Відгук</label>
-                        </div>
-                        <div class="user-box">
-                            <input name="rating"  type="number" min="1" max="5" step="0.5" required >
-                            <label>Оцінка</label>
-                        </div>
-                        <button>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Зберегти
-                        </button>
-        
                     </div>
-                    
-        
-                </form>
+                    <div class="user-box">
+                        <input name="review" type="text" maxlength="50" required>
+                        <label>Відгук</label>
+                    </div>
+                    <div class="user-box">
+                        <input name="rating" type="number" min="1" max="5" step="0.5" required>
+                        <label>Оцінка</label>
+                    </div>
+                    <button>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Зберегти
+                    </button>
+
             </div>
-                <script>
-                    const button = document.querySelector('#fbutton');
+
+
+            </form>
+    </div>
+    <script>
+        const form = document.querySelector('.register-box');
+        function LogformOpen13() {
             const form = document.querySelector('.register-box');
-            button.addEventListener('click',()=>{
-              form.classList.add('open');
-            });
-            const button2 =document.querySelector('#close_button');
-            button2.addEventListener('click',()=>{
-              form.classList.add('close');
-              window.location.href="/comments"
-            });
-                </script>
-        </div>
+            form.classList.remove('close');
+            form.classList.add('open');
+        }
+       
+        function LogformClose13() {
+            const form = document.querySelector('.register-box');
+            form.classList.remove('open');
+            form.classList.add('close');
+           
+        }
+    </script>
+    </div>
     <% } %>
-    
-<form action="/auth" role="form" method="post">
-    <div class="user-box">
-        <input name="username" type="text" id="username" required>
-        <label>Прізвище та ім'я</label>
-    </div>
-    </div>
-    <div class="user-box">
-        <input name="password" type="text" id="password" required>
-        <label>Номер телефону</label>
-    </div>
-    
-    <button>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Зберегти
-    </button>
+<div class="register-box box2">
+        <form action="/auth" role="form" method="post">
+            <div class="user-box">
+                <input name="username" type="text" id="username" required>
+                <label>Логін</label>
+            </div>
+            
+            <div class="user-box">
+                <input name="password" type="text" id="password" required>
+                <label>Пароль</label>
+            </div>
 
-</div>
+            <button>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Зберегти
+            </button>
+
+           
 
 
-</form>
+        </form>
+    </div>
+    <script>
+        function LogformOpen12() {
+            const form3 = document.querySelector('.register-box.box2');
+            form3.classList.remove('close');
+                form3.classList.add('open');
+        
+        }
+       
+    </script>
 </body>
+
 </html>

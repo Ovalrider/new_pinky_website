@@ -1,62 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/clients-course-style.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <title>Редагувати курс</title>
 </head>
-<body>
-    <button href="/" class="btn bth-nav-menu" id="fbutton">Замовити послугу</button>
-    <div class="register-box" id="showform">
-        <h2>Оновити</h2> <button id="close_button">x</button>
-        <form action="/edit_course/<%= course._id %>" role="form" method="post">       
-            <div class="user-box"></div>
-            <label for="courses">Оберіть курс:</label>
-                <select name="name" id="" >
-                <option type="text">Макіяж</option>
-                <option type="text">Макіяж для себе</option>
-                <option type="text">Курс підвищення кваліфікації</option>
-                </select>
-                <div class="user-box"></div>
-                <label for="masters">Оберіть майстера:</label>
-                <select name="master" id="" >
-                <option type="text">Аліна</option>
-                <option type="text">Петя</option>
-                <option type="text">Вася</option>
-                </select>
-                <div class="user-box">
-                    <input name="phone" value="<%- course.phone %>"  type="text" required>
-                    <label>Номер телефону</label>
-                </div>
-                <div class="user-box">
-                    <input name="deadline" value="<%- course.deadline.toLocaleDateString() %>"  type="date" required >
-                    <label>Дедлайн</label>
-                </div>
-                <button type="submit">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Зберегти
-                </button>
-            </div>
-            
 
-        </form>
-        <script>
-            const button = document.querySelector('#fbutton');
-    const form = document.querySelector('.register-box');
-    button.addEventListener('click',()=>{
-      form.classList.add('open');
-    });
-    const button2 =document.querySelector('#close_button');
-    button2.addEventListener('click',()=>{
-      form.classList.add('close');
-    });
-        </script>
+<body>
+    <header>
+        <div class="nav-container">
+            <nav>
+                <a href="/" class="makeupstudio">Pinky</a>
+
+                <ul class="nav-menu">
+                    <li><a href="/clients" class="links">наші послуги</a></li>
+                    <li><a href="/courses" class="links">наші курси</a></li>
+                    <li><a href="/comments" class="links">відгуки</a></li>
+                    <li><a href="/#masters" class="links">майстри</a></li>
+                    <li><a href="/#footer" class="links">контакти</a></li>
+                </ul>
+                <button class="nav-menu-btn ">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                    <div class="container2">
+                       
+                        <button  class="btn bth-nav-menu2" id="logbutton"  >Повернутись</button> 
+                        <button href="/" class="btn bth-nav-menu" id="fbutton" onclick=" LogformOpen23()">Редагувати рядок</button></div>  
+                    </div>
+                       
+
+            </nav>
+            <script>
+                let menuBtn = document.querySelector('.nav-menu-btn');
+                let menuNav = document.querySelector('.nav-menu');
+                menuBtn.addEventListener('click', function () {
+                    menuBtn.classList.toggle('active');
+                    menuNav.classList.toggle('open');
+                })
+            </script>
+
+        </div>
+
+
+    </header>
+    <div class="register-box box2" id="showform">
+        <h2>Оновити</h2> <button id="close_button" onclick="LogformClose23()">x</button>
+        <form action="/edit_course/<%= course._id %>" role="form" method="post">
+            <div class="select">
+                <select name="courses" id="">
+                    <option selected disabled>Оберіть курс</option>
+                    <option type="text">Базовий курс</option>
+                    <option type="text">Макіяж для себе</option>
+                    <option type="text">Підвищення кваліфікації</option>
+                </select>
+            </div>
+            <div class="select">
+                <select name="masters" id="">
+                    <option selected disabled>Оберіть майстра</option>
+                    <option type="text">Аманда</option>
+                    <option type="text">Стефан</option>
+                    <option type="text">Анна</option>
+                    <option type="text">Вікторія</option>
+                </select>
+            </div>
+            <div class="user-box">
+                <input name="phone" value="<%- course.phone %>" type="text" required>
+                <label>Номер телефону</label>
+            </div>
+            <div class="user-box box">
+                <input name="deadline" value="<%- course.deadline.toLocaleDateString() %>" type="date" required>
+                <label>Дедлайн</label>
+            </div>
+            <button type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Зберегти
+            </button>
+
+      </form>
+    </div>
+    <script>
+        const form5 = document.querySelector('.register-box.box2');
+        function LogformOpen23() {
+            const form5 = document.querySelector('.register-box.box2');
+            form5.classList.remove('close');
+            form5.classList.add('open');
+
+        } function LogformClose23() {
+            const form5 = document.querySelector('.register-box.box2');
+            form5.classList.remove('open');
+            form5.classList.add('close');
+
+        }
+    </script>
 </body>
+
 </html>

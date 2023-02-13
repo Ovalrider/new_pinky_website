@@ -24,11 +24,7 @@
                     <li><a href="/#masters" class="links">майстри</a></li>
                     <li><a href="/#footer" class="links">контакти</a></li>
                 </ul>
-                <button class="nav-menu-btn ">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+               
                 <% if (admin || user) { %>
                     <div class="container">
                         <a href="/logout" class="btn bth-nav-menu2">Вийти</a>
@@ -36,6 +32,11 @@
                     <% } else { %>
                         <button class="btn bth-nav-menu" id="fbutton" onclick="LogformOpen4()">Увійти</button>
                         <% } %>
+                        <button class="nav-menu-btn ">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>      
             </nav>
             <script>
                 let menuBtn = document.querySelector('.nav-menu-btn');
@@ -122,7 +123,7 @@
             }
             </script>
     <% if (admin) { %>
-        <button href="/" class="btn bth-nav-menu" onclick="LogformOpen2()" id="buttons">Додати курс</button></div>
+        <button href="/" class="btn bth-nav-menu b2" onclick="LogformOpen2()" id="buttons">Додати курс</button></div>
         <div class="register-box box2" id="showform">
             <h2>Додати</h2> <button id="close_button" onclick="LogformClose2()">x</button>
             <form action="/add_course" role="form" method="post">
