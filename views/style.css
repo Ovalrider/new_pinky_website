@@ -584,8 +584,12 @@ margin-bottom: 2em;
     color: #cf06b7;
   }
   @media screen and (max-width:1000px){
+    .artworks .artworks-cards{
+        flex-direction: column; 
+        gap: 1em
+     }
     h3{
-        font-size: 1.5vw;
+        font-size: 1.9vw;
     }
     .nav-menu-btn{
         display:block;
@@ -658,7 +662,5 @@ margin-bottom: 2em;
   }
 }
 @media screen and (max-width: 950px){
-    .artworks .artworks-cards{
-       flex-direction: column; 
-    }
+    
 }
